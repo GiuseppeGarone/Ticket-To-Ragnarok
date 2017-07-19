@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/Sfondo"
+    tools:context="com.example.giuseppegarone.tickettoragnarok.GameMenuActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="450dp"
+            android:layout_height="250dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="35dp"
+            android:src="@drawable/logo"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_marginStart="7dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/tutorial_button"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:background="@color/Trasparente"
+                android:scaleType="centerInside"
+                android:src="@drawable/tutorial_btn"/>
+
+            <ImageButton
+                android:id="@+id/play_game_button"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:background="@color/Trasparente"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/play_btn"/>
+
+            <ImageButton
+                android:id="@+id/top_players_button"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:background="@color/Trasparente"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/top_players_btn"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
