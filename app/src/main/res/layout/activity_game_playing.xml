@@ -11,8 +11,8 @@
         android:layout_width="500dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
-        android:layout_marginStart="40dp"
         android:layout_marginTop="-65dp"
+        android:layout_marginStart="40dp"
         android:scaleType="centerInside"
         android:src="@drawable/display_game"/>
 
@@ -22,8 +22,8 @@
         android:layout_height="wrap_content"
         android:background="@color/Trasparente"
         android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp"
         android:layout_marginTop="220dp"
+        android:layout_marginStart="30dp"
         android:scaleType="centerInside"
         android:src="@drawable/choose_btn"/>
 
@@ -33,8 +33,8 @@
         android:layout_height="wrap_content"
         android:background="@color/Trasparente"
         android:layout_marginLeft="490dp"
-        android:layout_marginStart="490dp"
         android:layout_marginTop="220dp"
+        android:layout_marginStart="490dp"
         android:scaleType="centerInside"
         android:src="@drawable/go_btn"/>
 
@@ -42,8 +42,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="155dp"
-        android:layout_marginStart="155dp"
         android:layout_marginTop="277dp"
+        android:layout_marginStart="155dp"
         android:orientation="horizontal">
 
         <ImageView
