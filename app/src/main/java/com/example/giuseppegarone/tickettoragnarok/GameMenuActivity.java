@@ -38,12 +38,12 @@ public class GameMenuActivity extends AppCompatActivity {
         tutorialButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), GameInstructionsActivity.class);
+                Intent i = new Intent(getApplicationContext(), GameTutorialActivity.class);
                 startActivity(i);
             }
         });
 
-        /* DA IMPLEMENTARE
+        /*
         topPlayersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

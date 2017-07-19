@@ -7,14 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class GameInstructionsActivity extends AppCompatActivity {
+public class GameTutorialActivity extends AppCompatActivity {
 
-    private Button backButton;
+    public Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_instructions);
+        setContentView(R.layout.activity_game_tutorial);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 

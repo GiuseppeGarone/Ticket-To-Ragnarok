@@ -21,7 +21,7 @@
 
         <activity android:name=".GameMenuActivity" />
 
-        <activity android:name=".GameInstructionsActivity" />
+        <activity android:name=".GameTutorialActivity" />
 
         <activity android:name=".GamePlayingActivity" />
     </application>
