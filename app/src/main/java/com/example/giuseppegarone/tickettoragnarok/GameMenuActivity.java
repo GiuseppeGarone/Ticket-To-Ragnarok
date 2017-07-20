@@ -35,7 +35,7 @@ public class GameMenuActivity extends AppCompatActivity {
         tutorialButton = (ImageButton)findViewById(R.id.tutorial_button);
         topPlayersButton = (ImageButton)findViewById(R.id.top_players_button);
 
-        // Listener pulsanti
+        // Listener pulsante PLAY
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,6 +44,7 @@ public class GameMenuActivity extends AppCompatActivity {
             }
         });
 
+        // Listener pulsante TUTORIAL
         tutorialButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +53,7 @@ public class GameMenuActivity extends AppCompatActivity {
             }
         });
 
+        // Listener pulsante TOP PLAYERS
         /*
         topPlayersButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -28,7 +28,7 @@ public class GamePlayingActivity extends AppCompatActivity {
         choosePathButton = (ImageButton)findViewById(R.id.choose_path_button);
         goButton = (ImageButton)findViewById(R.id.go_button);
 
-        // TextView
+        // TextViews
         currentRound = (TextView)findViewById(R.id.current_round);
         score = (TextView)findViewById(R.id.score);
         totalRound = (TextView)findViewById(R.id.total_round);
