@@ -4,11 +4,12 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="Bianco">#fff</color>
-    <color name="Nero">#000</color>
-    <color name="Rosso">#f69176</color>
-    <color name="Salmone">#f06d54</color>
-    <color name="Sfondo">#f5f5ea</color>
-    <color name="Trasparente">#00ffffff</color>
-    <color name="Verde">#56b0a7</color>
+    <color name="bianco">#fff</color>
+    <color name="marrone">#914e3f</color>
+    <color name="nero">#000</color>
+    <color name="rosso">#f69176</color>
+    <color name="salmone">#f06d54</color>
+    <color name="sfondo">#f5f5ea</color>
+    <color name="trasparente">#00ffffff</color>
+    <color name="verde">#56b0a7</color>
 </resources>

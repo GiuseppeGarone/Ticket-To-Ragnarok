@@ -11,6 +11,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -37,8 +38,9 @@ public class MainActivity extends Activity {
     private Handler mNetworkHandler, mMainHandler;
     private NetworkThread mNetworkThread = null;
 
+    // Pulsante START
     @BindView(R.id.start_button)
-    Button startButton;
+    ImageButton startButton;
 
     @BindViews({R.id.first_byte_ip, R.id.second_byte_ip, R.id.third_byte_ip, R.id.fourth_byte_ip})
     List<EditText> ip_address_bytes;
@@ -180,6 +182,7 @@ public class MainActivity extends Activity {
         }
     }
 
+    // Listener pulsante START
     @OnClick(R.id.start_button)
     void startApp(){
         Intent i = new Intent(getApplicationContext(), GameMenuActivity.class);
