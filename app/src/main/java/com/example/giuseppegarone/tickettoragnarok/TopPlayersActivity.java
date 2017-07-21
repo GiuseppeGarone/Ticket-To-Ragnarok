@@ -15,6 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -74,7 +75,7 @@ public class TopPlayersActivity extends AppCompatActivity {
     private void addScore() {
         //getting the values to save
         String nickname = editTextName.getText().toString().trim();
-        String score = "100";
+        Integer score = 12;
 
         //checking if the value is provided
         if (!TextUtils.isEmpty(nickname)) {
@@ -103,8 +104,8 @@ public class TopPlayersActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        //attaching value event listener
-        databaseClassifica.addValueEventListener(new ValueEventListener() {
+        Query query = databaseClassifica.orderByChild("score");
+        query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -112,9 +113,9 @@ public class TopPlayersActivity extends AppCompatActivity {
                 scores.clear();
 
                 //iterating through all the nodes
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
                     //getting score
-                    Score punteggio = postSnapshot.getValue(Score.class);
+                    Score punteggio = child.getValue(Score.class);
                     //adding score to the list
                     scores.add(punteggio);
                 }
@@ -123,6 +124,7 @@ public class TopPlayersActivity extends AppCompatActivity {
                 TopPlayersList scoreAdapter = new TopPlayersList(TopPlayersActivity.this, scores);
                 //attaching adapter to the listview
                 listViewScores.setAdapter(scoreAdapter);
+
             }
 
             @Override

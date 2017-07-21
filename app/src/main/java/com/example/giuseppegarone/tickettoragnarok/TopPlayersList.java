@@ -33,9 +33,10 @@ public class TopPlayersList extends ArrayAdapter<Score> {
         TextView textViewNickname = (TextView) listViewItem.findViewById(R.id.textViewNickname);
         TextView textViewScore = (TextView) listViewItem.findViewById(R.id.textViewScore);
 
-        Score punteggio = scores.get(position);
+        Score punteggio = scores.get(getCount()-1-position);
+
         textViewNickname.setText(punteggio.getNickname());
-        textViewScore.setText(punteggio.getScore());
+        textViewScore.setText(punteggio.getScore().toString());
 
         return listViewItem;
     }
