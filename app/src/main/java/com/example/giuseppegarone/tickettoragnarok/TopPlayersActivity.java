@@ -1,8 +1,7 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
-/**
- * Created by melissacoarezza on 21/07/17.
- */
+import android.support.v7.app.AppCompatActivity;
 
-public class TopPlayersActivity {
+public class TopPlayersActivity extends AppCompatActivity {
+
 }

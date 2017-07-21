@@ -24,6 +24,8 @@
         <activity android:name=".GameTutorialActivity" />
 
         <activity android:name=".GamePlayingActivity" />
+
+        <activity android:name=".TopPlayersActivity" />
     </application>
 
 </manifest>
