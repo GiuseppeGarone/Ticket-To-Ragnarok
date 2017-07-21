@@ -75,7 +75,7 @@ public class TopPlayersActivity extends AppCompatActivity {
     private void addScore() {
         //getting the values to save
         String nickname = editTextName.getText().toString().trim();
-        Integer score = 12;
+        String score = "12";
 
         //checking if the value is provided
         if (!TextUtils.isEmpty(nickname)) {

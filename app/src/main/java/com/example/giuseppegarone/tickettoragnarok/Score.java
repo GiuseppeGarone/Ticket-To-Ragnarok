@@ -10,13 +10,13 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class Score {
     private String nickname;
-    private Integer score;
+    private String score;
 
     public Score() {
 
     }
 
-    public Score(String nickname, Integer score) {
+    public Score(String nickname, String score) {
         this.nickname = nickname;
         this.score  = score;
     }
@@ -25,7 +25,7 @@ public class Score {
         return nickname;
     }
 
-    public Integer getScore() {
+    public String getScore() {
         return score;
     }
 }
