@@ -12,6 +12,9 @@ public class Score {
     private String nickname;
     private String score;
 
+    public Score() {
+
+    }
 
     public Score(String nickname, String score) {
         this.nickname = nickname;
