@@ -54,7 +54,6 @@ public class GameMenuActivity extends AppCompatActivity {
         });
 
         // Listener pulsante TOP PLAYERS
-        /*
         topPlayersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +61,5 @@ public class GameMenuActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        */
     }
 }
