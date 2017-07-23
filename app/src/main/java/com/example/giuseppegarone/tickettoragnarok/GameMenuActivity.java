@@ -17,6 +17,7 @@ public class GameMenuActivity extends AppCompatActivity {
     public TextView creditsView;            // Crediti
     public Typeface customFont;             // Font
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

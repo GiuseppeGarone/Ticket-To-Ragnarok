@@ -1,5 +1,6 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -9,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -31,6 +33,8 @@ public class TopPlayersActivity extends AppCompatActivity {
     EditText editTextName;
     Button buttonAddScore;
     ListView listViewScores;
+    TextView header;
+    Typeface customFont;
 
     //a list to store all the scores from firebase database
     List<Score> scores;
@@ -49,6 +53,10 @@ public class TopPlayersActivity extends AppCompatActivity {
         //getting views
         editTextName = (EditText) findViewById(R.id.editTextName);
         listViewScores = (ListView) findViewById(R.id.listViewScores);
+        header = (TextView) findViewById(R.id.textView);
+
+        customFont = Typeface.createFromAsset(getAssets(), "gameplay.ttf");
+        header.setTypeface(customFont);
 
         buttonAddScore = (Button) findViewById(R.id.buttonAddScore);
 
