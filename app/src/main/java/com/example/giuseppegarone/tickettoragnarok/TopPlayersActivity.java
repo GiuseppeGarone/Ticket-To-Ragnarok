@@ -1,5 +1,6 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
+import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -46,6 +47,9 @@ public class TopPlayersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_players);
+
+        // Orientamento landscape
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         //getting the reference of classifica node
         databaseClassifica = FirebaseDatabase.getInstance().getReference("Classifica");
