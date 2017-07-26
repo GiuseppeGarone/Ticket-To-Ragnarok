@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="Qual è la data più importante degli ultimi 500 anni?"
+
             android:textColor="@color/nero"
             android:textSize="18sp" />
 
@@ -35,7 +35,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="2dp"
-            android:text="15 Febbraio 1564"
+
+
             android:textColor="@color/nero"
             android:textSize="16sp"
             android:onClick="onCheckboxClicked" />
@@ -47,7 +48,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="2dp"
-            android:text="25 Dicembre 1642"
+
             android:textColor="@color/nero"
             android:textSize="16sp"
             android:onClick="onCheckboxClicked" />
@@ -59,7 +60,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="2dp"
-            android:text="14 Marzo 1879"
+
             android:textColor="@color/nero"
             android:textSize="16sp"
             android:onClick="onCheckboxClicked" />
@@ -71,7 +72,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="2dp"
-            android:text="17 Gennaio 1992"
+
             android:textColor="@color/nero"
             android:textSize="16sp"
             android:onClick="onCheckboxClicked" />
