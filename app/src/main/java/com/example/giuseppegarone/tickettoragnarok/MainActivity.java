@@ -207,18 +207,18 @@ public class MainActivity extends Activity {
                 tmp.put("a", 0);
                 if (i < 522) {
                     tmp.put("g", 255);
-                    tmp.put("b", 0);
+                    tmp.put("popupButton", 0);
                     tmp.put("r", 0);
                 } else if (i < 613) {
                     tmp.put("r", 255);
                     tmp.put("g", 0);
-                    tmp.put("b", 0);
+                    tmp.put("popupButton", 0);
                 } else if (i < 791) {
-                    tmp.put("b", 255);
+                    tmp.put("popupButton", 255);
                     tmp.put("g", 0);
                     tmp.put("r", 0);
                 } else {
-                    tmp.put("b", 255);
+                    tmp.put("popupButton", 255);
                     tmp.put("g", 0);
                     tmp.put("r", 255);
                 }

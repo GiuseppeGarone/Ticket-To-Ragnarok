@@ -1,14 +1,18 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class GamePlayingActivity extends AppCompatActivity {
 
+    public Button popupButton;
     public ImageButton choosePathButton;    // Pulsante SCEGLI PERCORSO
     public ImageButton goButton;            // Pulsante SEGUI PERCORSO
     public TextView currentRound;           // Round attuale
@@ -36,5 +40,14 @@ public class GamePlayingActivity extends AppCompatActivity {
         currentRound.setTypeface(customFont);
         score.setTypeface(customFont);
         totalRound.setTypeface(customFont);
+
+        // Pulsante provvisorio per far apparire il popup
+        popupButton = (Button)findViewById(R.id.popup_btn);
+        popupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(GamePlayingActivity.this, Popup.class));
+            }
+        });
     }
 }
