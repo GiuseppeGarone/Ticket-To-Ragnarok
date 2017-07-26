@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#eee">
+    android:background="#ddd">
 
     <LinearLayout
         android:id="@+id/domanda"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_margin="20dp"
         android:orientation="vertical">
 
         <TextView
@@ -19,7 +18,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:text="Qual è la data più importante degli ultimi 500 anni?"
-            android:textSize="18sp"/>
+            android:textColor="@color/nero"
+            android:textSize="18sp" />
 
         <CheckBox
             android:id="@+id/risposta1"
@@ -29,43 +29,50 @@
             android:layout_marginStart="20dp"
             android:layout_marginBottom="2dp"
             android:text="15 Febbraio 1564"
+            android:textColor="@color/nero"
             android:textSize="16sp"
-            android:onClick="onCheckboxClicked"/>
+            android:onClick="onCheckboxClicked" />
 
         <CheckBox
             android:id="@+id/risposta2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginBottom="2dp"
             android:text="25 Dicembre 1642"
+            android:textColor="@color/nero"
             android:textSize="16sp"
-            android:onClick="onCheckboxClicked"/>
+            android:onClick="onCheckboxClicked" />
 
         <CheckBox
             android:id="@+id/risposta3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginBottom="2dp"
             android:text="14 Marzo 1879"
+            android:textColor="@color/nero"
             android:textSize="16sp"
-            android:onClick="onCheckboxClicked"/>
+            android:onClick="onCheckboxClicked" />
 
         <CheckBox
             android:id="@+id/risposta4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginBottom="2dp"
             android:text="17 Gennaio 1992"
+            android:textColor="@color/nero"
             android:textSize="16sp"
-            android:onClick="onCheckboxClicked"/>
+            android:onClick="onCheckboxClicked" />
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/confirm_btn"
+        android:id="@+id/confirm_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

@@ -1,7 +1,6 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -48,7 +47,7 @@ public class Popup extends Activity {
         risp2 = (CheckBox)findViewById(R.id.risposta2);
         risp3 = (CheckBox)findViewById(R.id.risposta3);
         risp4 = (CheckBox)findViewById(R.id.risposta4);
-        confirmButton = (Button)findViewById(R.id.confirm_btn);
+        confirmButton = (Button)findViewById(R.id.confirm_button);
         confirmButton.setEnabled(false);
 
         // Memorizzo le risposte
@@ -58,20 +57,26 @@ public class Popup extends Activity {
         risp4Testo = risp4.getText().toString();
         rispGiusta = "17 Gennaio 1992";
 
+        // Listener pulsante CONFERMA RISPOSTA
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(checkAnswer(rispScelta, rispGiusta)) {
-                    Toast.makeText(getApplicationContext(), "Risposta corretta", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Risposta corretta!", Toast.LENGTH_SHORT).show();
                     //Intent i = new Intent(getApplicationContext(), WinActivity.class);
                     //startActivity(i);
                 } else {
-                    Toast.makeText(getApplicationContext(), "Risposta errata", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Risposta errata!", Toast.LENGTH_SHORT).show();
                     //Intent i = new Intent(getApplicationContext(), LoseActivity.class);
                     //startActivity(i);
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Disabilito tasto INDIETRO
     }
 
     // Controllo quale checkbox è stata selezionata
@@ -83,7 +88,7 @@ public class Popup extends Activity {
             case R.id.risposta1:
                 if (checked) {
                     rispScelta = risp1Testo;
-                    Toast.makeText(getApplicationContext(), "" + rispScelta, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Risposta selezionata: " + rispScelta, Toast.LENGTH_SHORT).show();
                     confirmButton.setEnabled(true);
                     risp2.setChecked(false);
                     risp3.setChecked(false);
@@ -96,7 +101,7 @@ public class Popup extends Activity {
             case R.id.risposta2:
                 if (checked) {
                     rispScelta = risp2Testo;
-                    Toast.makeText(getApplicationContext(), "" + rispScelta, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Risposta selezionata: " + rispScelta, Toast.LENGTH_SHORT).show();
                     confirmButton.setEnabled(true);
                     risp1.setChecked(false);
                     risp3.setChecked(false);
@@ -109,7 +114,7 @@ public class Popup extends Activity {
             case R.id.risposta3:
                 if (checked) {
                     rispScelta = risp3Testo;
-                    Toast.makeText(getApplicationContext(), "" + rispScelta, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Risposta selezionata: " + rispScelta, Toast.LENGTH_SHORT).show();
                     confirmButton.setEnabled(true);
                     risp1.setChecked(false);
                     risp2.setChecked(false);
@@ -122,7 +127,7 @@ public class Popup extends Activity {
             case R.id.risposta4:
                 if (checked) {
                     rispScelta = risp4Testo;
-                    Toast.makeText(getApplicationContext(), "" + rispScelta, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Risposta selezionata: " + rispScelta, Toast.LENGTH_SHORT).show();
                     confirmButton.setEnabled(true);
                     risp1.setChecked(false);
                     risp2.setChecked(false);
