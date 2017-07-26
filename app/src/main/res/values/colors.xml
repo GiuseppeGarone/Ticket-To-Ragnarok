@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Default colors -->
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <!-- Custom colors -->
     <color name="bianco">#fff</color>
     <color name="marrone">#914e3f</color>
     <color name="nero">#000</color>
@@ -12,4 +15,5 @@
     <color name="sfondo">#f5f5ea</color>
     <color name="trasparente">#00ffffff</color>
     <color name="verde">#56b0a7</color>
+
 </resources>
