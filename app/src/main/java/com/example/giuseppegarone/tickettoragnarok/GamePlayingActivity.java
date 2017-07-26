@@ -46,7 +46,20 @@ public class GamePlayingActivity extends AppCompatActivity {
         popupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(GamePlayingActivity.this, Popup.class));
+                /*
+                if(time>100) {
+                    punteggio = 100;
+                } else {
+                    punteggio = 1000;
+                }
+                Intent i = new Intent(GamePlayingActivity.this, Popup.class);
+                Bundle b = new Bundle();
+                b.putInt("punti", punteggio);
+                i.putExtras(b);
+                startActivity(i);
+                */
+
+                startActivity(new Intent(getApplicationContext(), Popup.class));
             }
         });
     }

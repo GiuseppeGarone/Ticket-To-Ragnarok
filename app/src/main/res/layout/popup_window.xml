@@ -5,6 +5,13 @@
     android:layout_height="match_parent"
     android:background="#ddd">
 
+    <TextView
+        android:id="@+id/prova_intent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="400dp"
+        android:layout_marginTop="100dp"/>
+
     <LinearLayout
         android:id="@+id/domanda"
         android:layout_width="match_parent"

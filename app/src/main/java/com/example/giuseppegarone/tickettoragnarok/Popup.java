@@ -1,6 +1,7 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,18 +14,18 @@ import android.widget.Toast;
 
 public class Popup extends Activity {
 
-    Button confirmButton;           // Pulsante CONFERMA RISPOSTA
-    CheckBox risp1;                 // Checkbox risposta 1
-    CheckBox risp2;                 // Checkbox risposta 2
-    CheckBox risp3;                 // Checkbox risposta 3
-    CheckBox risp4;                 // Checkbox risposta 4
-    String risp1Testo = "";         // Testo risposta 1
-    String risp2Testo = "";         // Testo risposta 2
-    String risp3Testo = "";         // Testo risposta 3
-    String risp4Testo = "";         // Testo risposta 4
-    String rispScelta = "";         // Testo risposta giusta
-    String rispGiusta = "";         // Testo risposta scelta
-    TextView testoDomanda;          // Domanda
+    public Button confirmButton;           // Pulsante CONFERMA RISPOSTA
+    public CheckBox risp1;                 // Checkbox risposta 1
+    public CheckBox risp2;                 // Checkbox risposta 2
+    public CheckBox risp3;                 // Checkbox risposta 3
+    public CheckBox risp4;                 // Checkbox risposta 4
+    public String risp1Testo = "";         // Testo risposta 1
+    public String risp2Testo = "";         // Testo risposta 2
+    public String risp3Testo = "";         // Testo risposta 3
+    public String risp4Testo = "";         // Testo risposta 4
+    public String rispScelta = "";         // Testo risposta giusta
+    public String rispGiusta = "";         // Testo risposta scelta
+    public TextView testoDomanda;          // Domanda
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,6 +50,13 @@ public class Popup extends Activity {
         risp4 = (CheckBox)findViewById(R.id.risposta4);
         confirmButton = (Button)findViewById(R.id.confirm_button);
         confirmButton.setEnabled(false);
+
+        /*
+        provaIntent = (TextView)findViewById(R.id.prova_intent);
+        Bundle extras = getIntent().getExtras();
+        tmpPunti = extras.getInt("punti");
+        provaIntent.setText(Integer.toString(tmpPunti));
+        */
 
         // Memorizzo le risposte
         risp1Testo = risp1.getText().toString();

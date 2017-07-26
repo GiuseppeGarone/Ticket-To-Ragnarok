@@ -41,7 +41,7 @@
         android:layout_below="@+id/buttonAddScore"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
-        android:text="Classifica"
+        android:text="@string/classifica_titolo"
         android:textAlignment="center"
         android:textColor="@color/marrone"
         android:textSize="36sp" />
