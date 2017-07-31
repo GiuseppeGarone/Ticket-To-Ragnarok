@@ -7,6 +7,39 @@
     android:background="@color/sfondo"
     tools:context="com.example.giuseppegarone.tickettoragnarok.GamePlayingActivity">
 
+    <Button
+        android:id="@+id/movimento1_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="MOVIMENTO ORARIO" />
+
+    <Button
+        android:id="@+id/movimento2_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:text="MOVIMENTO INTERNO" />
+
+    <Button
+        android:id="@+id/movimento3_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="140dp"
+        android:text="MOVIMENTO ESTERNO" />
+
+    <Button
+        android:id="@+id/change_color_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="210dp"
+        android:text="MOVIMENTO ANTIORARIO" />
+
+
+    <!-- VECCHIO LAYOUT
     <ImageView
         android:layout_width="500dp"
         android:layout_height="wrap_content"
@@ -102,5 +135,6 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="POPUP"/>
+        -->
 
 </RelativeLayout>
