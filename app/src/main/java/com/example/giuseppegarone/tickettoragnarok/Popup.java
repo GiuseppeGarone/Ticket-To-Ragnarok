@@ -131,7 +131,9 @@ public class Popup extends Activity {
                     //startActivity(i);
                 } else {
                     cancel();
-                    Toast.makeText(getApplicationContext(), "Risposta errata!", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(getApplicationContext(), LoseActivity.class);
+                    startActivity(i);
+                    //Toast.makeText(getApplicationContext(), "Risposta errata!", Toast.LENGTH_SHORT).show();
                     //Intent i = new Intent(getApplicationContext(), LoseActivity.class);
                     //startActivity(i);
                 }
