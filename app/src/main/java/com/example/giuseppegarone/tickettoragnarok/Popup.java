@@ -1,6 +1,7 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -121,7 +122,10 @@ public class Popup extends Activity {
                 if(checkAnswer(rispScelta, rispGiusta)) {
                     scoreBonus(residualTime);
                     cancel();
-                    Toast.makeText(getApplicationContext(), "Punteggio finale: " + finalScore, Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(getApplicationContext(), WinActivity.class);
+                    i.putExtra("punti", finalScore);
+                    startActivity(i);
+                    //Toast.makeText(getApplicationContext(), "Punteggio finale: " + finalScore, Toast.LENGTH_SHORT).show();
                     //Toast.makeText(getApplicationContext(), "Risposta corretta!", Toast.LENGTH_SHORT).show();
                     //Intent i = new Intent(getApplicationContext(), WinActivity.class);
                     //startActivity(i);
