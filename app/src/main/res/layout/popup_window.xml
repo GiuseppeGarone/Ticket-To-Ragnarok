@@ -3,20 +3,45 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ddd">
+    android:background="@color/popup">
 
-    <TextView
-        android:id="@+id/prova_intent"
+    <!-- Timer -->
+    <LinearLayout
+        android:id="@+id/timer_section"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="400dp"
-        android:layout_marginTop="100dp"/>
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TIMER: "
+            android:textColor="#000"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/time_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#000"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+    <!-- Domanda -->
     <LinearLayout
         android:id="@+id/domanda"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_below="@id/timer_section"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
         android:orientation="vertical">
 
         <TextView
@@ -24,7 +49,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-
             android:textColor="@color/nero"
             android:textSize="18sp" />
 
@@ -32,50 +56,45 @@
             android:id="@+id/risposta1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp"
-            android:layout_marginBottom="2dp"
-
-
+            android:onClick="onCheckboxClicked"
             android:textColor="@color/nero"
-            android:textSize="16sp"
-            android:onClick="onCheckboxClicked" />
+            android:textSize="16sp" />
 
         <CheckBox
             android:id="@+id/risposta2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp"
-            android:layout_marginBottom="2dp"
-
+            android:onClick="onCheckboxClicked"
             android:textColor="@color/nero"
-            android:textSize="16sp"
-            android:onClick="onCheckboxClicked" />
+            android:textSize="16sp" />
 
         <CheckBox
             android:id="@+id/risposta3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp"
-            android:layout_marginBottom="2dp"
-
+            android:onClick="onCheckboxClicked"
             android:textColor="@color/nero"
-            android:textSize="16sp"
-            android:onClick="onCheckboxClicked" />
+            android:textSize="16sp" />
 
         <CheckBox
             android:id="@+id/risposta4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp"
-            android:layout_marginBottom="2dp"
-
+            android:onClick="onCheckboxClicked"
             android:textColor="@color/nero"
-            android:textSize="16sp"
-            android:onClick="onCheckboxClicked" />
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -83,9 +102,9 @@
         android:id="@+id/confirm_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/domanda"
+        android:layout_marginTop="10dp"
         android:text="CONFERMA" />
 
 </RelativeLayout>

@@ -1,12 +1,12 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -17,28 +17,34 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import static android.content.ContentValues.TAG;
-
 public class Popup extends Activity {
 
-    public Button confirmButton;           // Pulsante CONFERMA RISPOSTA
-    public CheckBox risp1;                 // Checkbox risposta 1
-    public CheckBox risp2;                 // Checkbox risposta 2
-    public CheckBox risp3;                 // Checkbox risposta 3
-    public CheckBox risp4;                 // Checkbox risposta 4
-    public String risp1Testo = "";         // Testo risposta 1
-    public String risp2Testo = "";         // Testo risposta 2
-    public String risp3Testo = "";         // Testo risposta 3
-    public String risp4Testo = "";         // Testo risposta 4
-    public String rispScelta = "";         // Testo risposta giusta
-    public String rispGiusta = "";         // Testo risposta scelta
-    public TextView testoDomanda;          // Domanda
+    public Button confirmButton;
+    public CheckBox risp1;
+    public CheckBox risp2;
+    public CheckBox risp3;
+    public CheckBox risp4;
+    public String risp1Testo = "";
+    public String risp2Testo = "";
+    public String risp3Testo = "";
+    public String risp4Testo = "";
+    public String rispScelta = "";
+    public String rispGiusta = "";
+    public TextView testoDomanda;
+
+    public CountDownTimer countDownTimer;
+    public TextView time;
+
+    public double bonus1 = 0.2;
+    public double bonus2 = 0.5;
+    public int finalScore;
+    public int residualTime;
+    public int timerDurationSecs = 21;
 
     //our database reference object
     DatabaseReference databaseDomande;
@@ -59,9 +65,10 @@ public class Popup extends Activity {
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int width = dm.widthPixels;
         int height = dm.heightPixels;
-        getWindow().setLayout((int)(width*.8),(int)(height*.8));
+        getWindow().setLayout((int)(width*.8),(int)(height*.85));
 
         // Prelevo riferimenti
+        time = (TextView)findViewById(R.id.time_value);
         testoDomanda = (TextView)findViewById(R.id.testo_domanda);
         risp1 = (CheckBox)findViewById(R.id.risposta1);
         risp2 = (CheckBox)findViewById(R.id.risposta2);
@@ -70,19 +77,8 @@ public class Popup extends Activity {
         confirmButton = (Button)findViewById(R.id.confirm_button);
         confirmButton.setEnabled(false);
 
-        /*
-        provaIntent = (TextView)findViewById(R.id.prova_intent);
-        Bundle extras = getIntent().getExtras();
-        tmpPunti = extras.getInt("punti");
-        provaIntent.setText(Integer.toString(tmpPunti));
-        */
-
-        /* Memorizzo le risposte
-        risp1Testo = risp1.getText().toString();
-        risp2Testo = risp2.getText().toString();
-        risp3Testo = risp3.getText().toString();
-        risp4Testo = risp4.getText().toString();
-        rispGiusta = "17 Gennaio 1992";*/
+        // Avvio timer
+        start();
 
         databaseDomande.addValueEventListener(new ValueEventListener() {
             @Override
@@ -123,10 +119,14 @@ public class Popup extends Activity {
             @Override
             public void onClick(View view) {
                 if(checkAnswer(rispScelta, rispGiusta)) {
-                    Toast.makeText(getApplicationContext(), "Risposta corretta!", Toast.LENGTH_SHORT).show();
+                    scoreBonus(residualTime);
+                    cancel();
+                    Toast.makeText(getApplicationContext(), "Punteggio finale: " + finalScore, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Risposta corretta!", Toast.LENGTH_SHORT).show();
                     //Intent i = new Intent(getApplicationContext(), WinActivity.class);
                     //startActivity(i);
                 } else {
+                    cancel();
                     Toast.makeText(getApplicationContext(), "Risposta errata!", Toast.LENGTH_SHORT).show();
                     //Intent i = new Intent(getApplicationContext(), LoseActivity.class);
                     //startActivity(i);
@@ -200,6 +200,39 @@ public class Popup extends Activity {
         }
     }
 
+    // Partenza timer
+    public void start() {
+
+        countDownTimer = new CountDownTimer(timerDurationSecs*1000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinisched) {
+                residualTime = (int)millisUntilFinisched/1000;
+                time.setText("" + residualTime);
+                if(millisUntilFinisched/1000 < 10) {
+                    time.setTextColor(Color.RED);
+                }
+            }
+
+            // Fine timer
+            @Override
+            public void onFinish() {
+                cancel();
+                //Intent i = new Intent(getApplicationContext(), LoseActivity.class);
+                //startActivity(i);
+            }
+        };
+
+        countDownTimer.start();
+    }
+
+    // Interruzione timer
+    public void cancel() {
+        if(countDownTimer != null) {
+            countDownTimer.cancel();
+            countDownTimer = null;
+        }
+    }
+
     // Confronto risposta scelta e risposta giusta
     public boolean checkAnswer(String a, String b) {
         if(a.equals(b)) {
@@ -207,5 +240,15 @@ public class Popup extends Activity {
         } else {
             return false;
         }
+    }
+
+    public int scoreBonus (int n) {
+        if(n > 14) {
+            finalScore = n + (int)(n * bonus2);
+        } else {
+            finalScore = n + (int)(n * bonus1);
+        }
+
+        return finalScore;
     }
 }
