@@ -11,7 +11,7 @@
     android:paddingTop="10dp"
     tools:context="com.example.giuseppegarone.tickettoragnarok.TopPlayersActivity">
 
-    <!-- Form iscrizione al server -->
+    <!-- Form iscrizione al server (DA RIMUOVERE) -->
     <EditText
         android:id="@+id/editTextName"
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
         android:layout_below="@+id/editTextName"
         android:text="Add" />
 
-    <!-- Classifica punteggi -->
+    <!-- Classifica -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"

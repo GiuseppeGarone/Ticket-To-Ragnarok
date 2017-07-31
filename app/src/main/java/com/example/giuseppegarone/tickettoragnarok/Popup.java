@@ -91,11 +91,14 @@ public class Popup extends Activity {
                 int i = rand.nextInt(n);
 
                 final ArrayList<Question> objects = new ArrayList<>();
+
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     Question object = child.getValue(Question.class);
                     objects.add(object);
                 }
+
                 Question Dscelta = objects.get(i);
+
                 // Memorizzo le risposte
                 testoDomanda.setText(Dscelta.getDtext());
                 risp1.setText(Dscelta.getR1());
@@ -121,21 +124,20 @@ public class Popup extends Activity {
             public void onClick(View view) {
                 if(checkAnswer(rispScelta, rispGiusta)) {
                     scoreBonus(residualTime);
+
                     cancel();
+
                     Intent i = new Intent(getApplicationContext(), WinActivity.class);
                     i.putExtra("punti", finalScore);
                     startActivity(i);
                     //Toast.makeText(getApplicationContext(), "Punteggio finale: " + finalScore, Toast.LENGTH_SHORT).show();
                     //Toast.makeText(getApplicationContext(), "Risposta corretta!", Toast.LENGTH_SHORT).show();
-                    //Intent i = new Intent(getApplicationContext(), WinActivity.class);
-                    //startActivity(i);
                 } else {
                     cancel();
+
                     Intent i = new Intent(getApplicationContext(), LoseActivity.class);
                     startActivity(i);
                     //Toast.makeText(getApplicationContext(), "Risposta errata!", Toast.LENGTH_SHORT).show();
-                    //Intent i = new Intent(getApplicationContext(), LoseActivity.class);
-                    //startActivity(i);
                 }
             }
         });
@@ -155,7 +157,7 @@ public class Popup extends Activity {
             case R.id.risposta1:
                 if (checked) {
                     rispScelta = risp1Testo;
-                    Toast.makeText(getApplicationContext(), "Risposta selezionata: " + rispScelta, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Risposta selezionata: " + rispScelta, Toast.LENGTH_SHORT).show();
                     confirmButton.setEnabled(true);
                     risp2.setChecked(false);
                     risp3.setChecked(false);
@@ -168,7 +170,7 @@ public class Popup extends Activity {
             case R.id.risposta2:
                 if (checked) {
                     rispScelta = risp2Testo;
-                    Toast.makeText(getApplicationContext(), "Risposta selezionata: " + rispScelta, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Risposta selezionata: " + rispScelta, Toast.LENGTH_SHORT).show();
                     confirmButton.setEnabled(true);
                     risp1.setChecked(false);
                     risp3.setChecked(false);
@@ -181,7 +183,7 @@ public class Popup extends Activity {
             case R.id.risposta3:
                 if (checked) {
                     rispScelta = risp3Testo;
-                    Toast.makeText(getApplicationContext(), "Risposta selezionata: " + rispScelta, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Risposta selezionata: " + rispScelta, Toast.LENGTH_SHORT).show();
                     confirmButton.setEnabled(true);
                     risp1.setChecked(false);
                     risp2.setChecked(false);
@@ -194,7 +196,7 @@ public class Popup extends Activity {
             case R.id.risposta4:
                 if (checked) {
                     rispScelta = risp4Testo;
-                    Toast.makeText(getApplicationContext(), "Risposta selezionata: " + rispScelta, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Risposta selezionata: " + rispScelta, Toast.LENGTH_SHORT).show();
                     confirmButton.setEnabled(true);
                     risp1.setChecked(false);
                     risp2.setChecked(false);
@@ -223,8 +225,8 @@ public class Popup extends Activity {
             @Override
             public void onFinish() {
                 cancel();
-                //Intent i = new Intent(getApplicationContext(), LoseActivity.class);
-                //startActivity(i);
+                Intent i = new Intent(getApplicationContext(), LoseActivity.class);
+                startActivity(i);
             }
         };
 
