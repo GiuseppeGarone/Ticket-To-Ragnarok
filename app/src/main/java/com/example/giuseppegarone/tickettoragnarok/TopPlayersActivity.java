@@ -1,5 +1,6 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -31,8 +32,7 @@ public class TopPlayersActivity extends AppCompatActivity {
     public static final String SCORE_ID = "net.simplifiedcoding.firebasedatabaseexample.artistid";*/
 
     //view objects
-    EditText editTextName;
-    Button buttonAddScore;
+    Button buttonBackHome;
     ListView listViewScores;
     TextView header;
     Typeface customFont;
@@ -55,62 +55,25 @@ public class TopPlayersActivity extends AppCompatActivity {
         databaseClassifica = FirebaseDatabase.getInstance().getReference("Classifica");
 
         //getting views
-        editTextName = (EditText) findViewById(R.id.editTextName);
         listViewScores = (ListView) findViewById(R.id.listViewScores);
         header = (TextView) findViewById(R.id.textView);
 
         customFont = Typeface.createFromAsset(getAssets(), "gameplay.ttf");
         header.setTypeface(customFont);
 
-        buttonAddScore = (Button) findViewById(R.id.buttonAddScore);
+        buttonBackHome = (Button) findViewById(R.id.buttonBackHome);
 
         //list to store scores
         scores = new ArrayList<>();
 
-
         //adding an onclicklistener to button
-        buttonAddScore.setOnClickListener(new View.OnClickListener() {
+        buttonBackHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //calling the method addScore()
-                //the method is defined below
-                //this method is actually performing the write operation
-                addScore();
+                Intent i = new Intent(getApplicationContext(), GameMenuActivity.class);
+                startActivity(i);
             }
         });
-    }
-
-    /*
-    * This method is saving a new score to the
-    * Firebase Realtime Database
-    * */
-    private void addScore() {
-        //getting the values to save
-        String nickname = editTextName.getText().toString().trim();
-        String score = "12";
-
-        //checking if the value is provided
-        if (!TextUtils.isEmpty(nickname)) {
-
-            //getting a unique id using push().getKey() method
-            //it will create a unique id and we will use it as the Primary Key for our Score
-            String id = databaseClassifica.push().getKey();
-
-            //creating a Score Object
-            Score punteggio = new Score(nickname, score);
-
-            //Saving the Score
-            databaseClassifica.child(id).setValue(punteggio);
-
-            //setting edittext to blank again
-            editTextName.setText("");
-
-            //displaying a success toast
-            Toast.makeText(this, "New Score added", Toast.LENGTH_LONG).show();
-        } else {
-            //if the value is not given displaying a toast
-            Toast.makeText(this, "Please enter a name", Toast.LENGTH_LONG).show();
-        }
     }
 
     @Override
