@@ -42,6 +42,8 @@ public class GamePlayingActivity extends AppCompatActivity {
 
         // Aggiungo la ragnatela sopra il layout .xml
         final DrawView v = new DrawView(this);
+        final AccensioneRagnatela a = new AccensioneRagnatela();
+        a.popola();
         addContentView(v, new ViewGroup.LayoutParams(600, 600));
         v.setX(100);
         v.draw(c);
@@ -51,12 +53,14 @@ public class GamePlayingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(v.i < 10){
+                    a.accendere(v.i+15);
                     v.i = v.i + 5;
                 } else {
                     v.i = v.i;
                 }
 
                 if(v.finito == true) {
+                    // a.accendere(tutto);
                     Intent i = new Intent(getApplicationContext(), Popup.class);
                     startActivity(i);
                 }
@@ -70,12 +74,14 @@ public class GamePlayingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(v.i > 4){
+                    a.accendere(v.i+10);
                     v.i = v.i - 5;
                 } else {
                     v.i = v.i;
                 }
 
                 if(v.finito == true) {
+                    // a.accendere(tutto);
                     Intent i = new Intent(getApplicationContext(), Popup.class);
                     startActivity(i);
                 }
@@ -90,16 +96,20 @@ public class GamePlayingActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(v.i == 4 || v.i == 9 || v.i == 14) {
                     if(v.i == 4) {
+                        a.accendere(0);
                         v.i = 0;
                     }
                     if(v.i == 9) {
+                        a.accendere(5);
                         v.i = 5;
                     }
                     if(v.i == 14) {
+                        a.accendere(10);
                         v.i = 10;
                     }
                 } else {
                     if(v.i == 0 || v.i == 1 || v.i == 2 || v.i == 3 || v.i == 5 || v.i == 6 || v.i == 7 || v.i == 8 || v.i == 10 || v.i == 11 || v.i == 12 || v.i == 13) {
+                        a.accendere(v.i+1);
                         v.i = v.i + 1;
                     }
                 }
@@ -119,16 +129,20 @@ public class GamePlayingActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(v.i == 0 || v.i == 5 || v.i == 10) {
                     if(v.i == 0) {
+                        a.accendere(0);
                         v.i = 4;
                     }
                     if(v.i == 5){
+                        a.accendere(5);
                         v.i = 9;
                     }
                     if(v.i == 10){
+                        a.accendere(10);
                         v.i = 14;
                     }
                 } else {
                     if(v.i == 1 || v.i == 2 || v.i == 3 || v.i == 4 || v.i == 6 || v.i == 7 || v.i == 8 || v.i == 9 || v.i == 11 || v.i == 12 || v.i == 13 || v.i == 14) {
+                        a.accendere(v.i);
                         v.i = v.i - 1;
                     }
                 }
@@ -156,17 +170,6 @@ public class GamePlayingActivity extends AppCompatActivity {
         currentRound.setTypeface(customFont);
         score.setTypeface(customFont);
         totalRound.setTypeface(customFont);
-        */
-
-        /*
-        // Pulsante provvisorio per far apparire il popup
-        popupButton = (Button)findViewById(R.id.popup_btn);
-        popupButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Popup.class));
-            }
-        });
         */
     }
 }
