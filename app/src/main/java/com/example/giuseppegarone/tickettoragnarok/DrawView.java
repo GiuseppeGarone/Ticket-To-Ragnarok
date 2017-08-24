@@ -1,12 +1,10 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
-import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -33,17 +31,22 @@ public class DrawView extends View {
         paintPart.setColor(Color.RED);
         paintArr.setColor(Color.GREEN);
         paintProva.setColor(Color.BLUE);
+
+        paint.setAntiAlias(true);
+        paintPart.setAntiAlias(true);
+        paintArr.setAntiAlias(true);
+        paintProva.setAntiAlias(true);
     }
 
     public void startRandom() {
-        if(i==100) {
+        if(i == 100) {
             Random r = new Random();
             i = r.nextInt(15 - 0) + 0;
         }
     }
 
     public void finishRandom() {
-        if(h==100) {
+        if(h == 100) {
             Random s = new Random();
             h = s.nextInt(15 - 0) + 0;
             while(h == i) {

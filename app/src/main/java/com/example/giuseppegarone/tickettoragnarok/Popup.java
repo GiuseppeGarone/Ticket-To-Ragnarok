@@ -130,14 +130,11 @@ public class Popup extends Activity {
                     Intent i = new Intent(getApplicationContext(), WinActivity.class);
                     i.putExtra("punti", finalScore);
                     startActivity(i);
-                    //Toast.makeText(getApplicationContext(), "Punteggio finale: " + finalScore, Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(getApplicationContext(), "Risposta corretta!", Toast.LENGTH_SHORT).show();
                 } else {
                     cancel();
 
                     Intent i = new Intent(getApplicationContext(), LoseActivity.class);
                     startActivity(i);
-                    //Toast.makeText(getApplicationContext(), "Risposta errata!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -145,7 +142,7 @@ public class Popup extends Activity {
 
     @Override
     public void onBackPressed() {
-        // Disabilito tasto INDIETRO
+        // Disabilito tasto BACK di sistema
     }
 
     // Controllo quale checkbox è stata selezionata
@@ -157,7 +154,6 @@ public class Popup extends Activity {
             case R.id.risposta1:
                 if (checked) {
                     rispScelta = risp1Testo;
-                    //Toast.makeText(getApplicationContext(), "Risposta selezionata: " + rispScelta, Toast.LENGTH_SHORT).show();
                     confirmButton.setEnabled(true);
                     risp2.setChecked(false);
                     risp3.setChecked(false);
@@ -170,7 +166,6 @@ public class Popup extends Activity {
             case R.id.risposta2:
                 if (checked) {
                     rispScelta = risp2Testo;
-                    //Toast.makeText(getApplicationContext(), "Risposta selezionata: " + rispScelta, Toast.LENGTH_SHORT).show();
                     confirmButton.setEnabled(true);
                     risp1.setChecked(false);
                     risp3.setChecked(false);
@@ -183,7 +178,6 @@ public class Popup extends Activity {
             case R.id.risposta3:
                 if (checked) {
                     rispScelta = risp3Testo;
-                    //Toast.makeText(getApplicationContext(), "Risposta selezionata: " + rispScelta, Toast.LENGTH_SHORT).show();
                     confirmButton.setEnabled(true);
                     risp1.setChecked(false);
                     risp2.setChecked(false);
@@ -196,7 +190,6 @@ public class Popup extends Activity {
             case R.id.risposta4:
                 if (checked) {
                     rispScelta = risp4Testo;
-                    //Toast.makeText(getApplicationContext(), "Risposta selezionata: " + rispScelta, Toast.LENGTH_SHORT).show();
                     confirmButton.setEnabled(true);
                     risp1.setChecked(false);
                     risp2.setChecked(false);
@@ -250,6 +243,7 @@ public class Popup extends Activity {
         }
     }
 
+    // Calcolo punteggio
     public int scoreBonus (int n) {
         if(n > 14) {
             finalScore = n + (int)(n * bonus2);
