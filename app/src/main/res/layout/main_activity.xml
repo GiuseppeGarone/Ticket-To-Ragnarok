@@ -10,16 +10,18 @@
     tools:context="com.example.giuseppegarone.tickettoragnarok.MainActivity">
 
     <TextView
+        android:id="@+id/main_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:layout_marginTop="48dp"
-        android:text="@string/server_info" />
+        android:layout_marginTop="52dp"
+        android:text="@string/server_info"
+        android:textColor="@color/marrone"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="50dp"
         android:orientation="horizontal">
 
         <EditText

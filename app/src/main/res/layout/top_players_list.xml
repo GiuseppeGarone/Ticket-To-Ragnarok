@@ -8,8 +8,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="11dp"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal">
 
@@ -19,17 +19,19 @@
             android:layout_height="wrap_content"
             android:text="Player1"
             android:textColor="@color/marrone"
-            android:textSize="24sp" />
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewScore"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginStart="50dp"
             android:text="100"
             android:textColor="@color/rosso"
-            android:textSize="24sp" />
+            android:textSize="22sp"
+            android:textStyle="bold|italic" />
 
     </LinearLayout>
 

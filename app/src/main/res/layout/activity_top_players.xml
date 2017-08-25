@@ -6,12 +6,11 @@
     android:layout_height="match_parent"
     android:background="@color/sfondo"
     android:paddingBottom="10dp"
-    android:paddingLeft="50dp"
-    android:paddingRight="50dp"
+    android:paddingLeft="80dp"
+    android:paddingRight="80dp"
     android:paddingTop="10dp"
     tools:context="com.example.giuseppegarone.tickettoragnarok.TopPlayersActivity">
 
-    <!-- Classifica -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
@@ -19,27 +18,28 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/buttonAddScore"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="15dp"
         android:text="@string/classifica_titolo"
         android:textAlignment="center"
         android:textColor="@color/marrone"
-        android:textSize="36sp" />
+        android:textSize="32sp" />
 
     <ListView
         android:id="@+id/listViewScores"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonBackHome"
         android:layout_below="@+id/textView"
         android:divider="@color/verde"
-        android:dividerHeight="3dp"
-        android:layout_above="@+id/buttonBackHome" />
+        android:dividerHeight="2dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="BACK TO HOME"
+        android:text="BACK TO MENU"
         android:id="@+id/buttonBackHome"
+        android:layout_marginTop="5dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 

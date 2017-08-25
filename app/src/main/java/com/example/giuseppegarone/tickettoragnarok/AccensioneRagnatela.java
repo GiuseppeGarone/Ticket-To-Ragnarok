@@ -19,7 +19,6 @@ public class AccensioneRagnatela {
     SegmentoRagnatelaFisica segmento5 = new SegmentoRagnatelaFisica();
     boolean bho5 = segmento5.setPartenzaArrivo(844,902);
 
-
     SegmentoRagnatelaFisica segmento6 = new SegmentoRagnatelaFisica();
     boolean bho6 = segmento6.setPartenzaArrivo(686,727);
     SegmentoRagnatelaFisica segmento7 = new SegmentoRagnatelaFisica();
@@ -31,8 +30,6 @@ public class AccensioneRagnatela {
     SegmentoRagnatelaFisica segmento10 = new SegmentoRagnatelaFisica();
     boolean bho10 = segmento10.setPartenzaArrivo(653,685);
 
-
-
     SegmentoRagnatelaFisica segmento11 = new SegmentoRagnatelaFisica();
     boolean bho11 = segmento11.setPartenzaArrivo(560,576);
     SegmentoRagnatelaFisica segmento12 = new SegmentoRagnatelaFisica();
@@ -43,8 +40,6 @@ public class AccensioneRagnatela {
     boolean bho14 = segmento14.setPartenzaArrivo(524,541);
     SegmentoRagnatelaFisica segmento15 = new SegmentoRagnatelaFisica();
     boolean bho15 = segmento15.setPartenzaArrivo(544,557);
-
-
 
     SegmentoRagnatelaFisica segmento16 = new SegmentoRagnatelaFisica();
     boolean bho16 = segmento16.setPartenzaArrivo(333,343);
@@ -104,7 +99,7 @@ public class AccensioneRagnatela {
         int a = daAccendere.arrivo;
 
         /*
-         * codice per accendere da a su ragnatela miri
+         * codice per accendere "da ... a" su ragnatela miri
          */
     }
 }
