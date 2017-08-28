@@ -196,8 +196,38 @@ public class MainActivity extends Activity {
     // Listener pulsante START
     @OnClick(R.id.start_button)
     void startApp(){
+
+        //spengo tutti i pixel del display
+        try {
+            JSONArray pixels_array = preparePixelsArray();
+
+            for (int i = 0; i < pixels_array.length(); i++) {
+                ((JSONObject) pixels_array.get(i)).put("r", 0);
+                ((JSONObject) pixels_array.get(i)).put("g", 0);
+                ((JSONObject) pixels_array.get(i)).put("b", 0);
+            }
+            handleNetworkRequest(NetworkThread.SET_DISPLAY_PIXELS, pixels_array, 0 ,0);
+        } catch (JSONException e) {
+            // There should be no Exception
+        }
+
+        /*spengo tutti i led
+        try {
+            JSONArray pixels_array = preparePixelsArray();
+
+            for (int i = 0; i < pixels_array.length(); i++) {
+                ((JSONObject) pixels_array.get(i)).put("r", 0);
+                ((JSONObject) pixels_array.get(i)).put("g", 0);
+                ((JSONObject) pixels_array.get(i)).put("b", 0);
+            }
+            handleNetworkRequest(NetworkThread.SET_PIXELS, pixels_array, 0 ,0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+*/
         Intent i = new Intent(getApplicationContext(), GameMenuActivity.class);
         startActivity(i);
+
     }
 
     private void handleNetworkRequest(int what, Object payload, int arg1, int arg2) {

@@ -1,9 +1,13 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class AccensioneRagnatela {
+
+    private JSONArray pixels_array;
 
     List<SegmentoRagnatelaFisica> possibiliSegmenti = new ArrayList<SegmentoRagnatelaFisica>();
     public int k;
@@ -98,8 +102,13 @@ public class AccensioneRagnatela {
         int da = daAccendere.partenza;
         int a = daAccendere.arrivo;
 
-        /*
-         * codice per accendere "da ... a" su ragnatela miri
-         */
+        /*try {
+            pixels_array = preparePixelsArray();
+            handleNetworkRequest(NetworkThread.SET_PIXELS, pixels_array, 0 ,0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        */
     }
 }
