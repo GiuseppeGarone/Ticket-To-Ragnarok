@@ -197,7 +197,7 @@ public class MainActivity extends Activity {
     @OnClick(R.id.start_button)
     void startApp(){
 
-        /*spengo tutti i pixel del display
+        spengo tutti i pixel del display
         try {
             JSONArray pixels_array = preparePixelsArray();
 
@@ -210,7 +210,7 @@ public class MainActivity extends Activity {
         } catch (JSONException e) {
             // There should be no Exception
         }
-*/
+
        // spengo tutti i led
         try {
             JSONArray pixels_array = preparePixelsArray();
