@@ -100,13 +100,15 @@
 
     </LinearLayout>
 
-    <Button
+    <ImageButton
         android:id="@+id/confirm_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/domanda"
         android:layout_marginTop="10dp"
-        android:text="CONFERMA" />
+        android:background="@color/trasparente"
+        android:scaleType="centerInside"
+        android:src="@drawable/confirm_btn" />
 
 </RelativeLayout>

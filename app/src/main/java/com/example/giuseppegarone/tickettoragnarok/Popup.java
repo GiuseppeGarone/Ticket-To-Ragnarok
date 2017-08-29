@@ -11,6 +11,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +26,7 @@ import java.util.Random;
 
 public class Popup extends Activity {
 
-    public Button confirmButton;
+    public ImageButton confirmButton;
     public CheckBox risp1;
     public CheckBox risp2;
     public CheckBox risp3;
@@ -75,7 +76,7 @@ public class Popup extends Activity {
         risp2 = (CheckBox)findViewById(R.id.risposta2);
         risp3 = (CheckBox)findViewById(R.id.risposta3);
         risp4 = (CheckBox)findViewById(R.id.risposta4);
-        confirmButton = (Button)findViewById(R.id.confirm_button);
+        confirmButton = (ImageButton)findViewById(R.id.confirm_button);
         confirmButton.setEnabled(false);
 
         // Avvio timer
