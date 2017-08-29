@@ -7,134 +7,59 @@
     android:background="@color/sfondo"
     tools:context="com.example.giuseppegarone.tickettoragnarok.GamePlayingActivity">
 
-    <Button
-        android:id="@+id/movimento1_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="MOVIMENTO ORARIO" />
-
-    <Button
-        android:id="@+id/movimento2_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp"
-        android:text="MOVIMENTO INTERNO" />
-
-    <Button
-        android:id="@+id/movimento3_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="140dp"
-        android:text="MOVIMENTO ESTERNO" />
-
-    <Button
-        android:id="@+id/change_color_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="210dp"
-        android:text="MOVIMENTO ANTIORARIO" />
-
-
-    <!-- VECCHIO LAYOUT
+    <!-- Sfondo -->
     <ImageView
-        android:layout_width="500dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="-65dp"
-        android:layout_marginStart="40dp"
+        android:layout_width="420dp"
+        android:layout_height="220dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
         android:scaleType="centerInside"
         android:src="@drawable/display_game" />
 
+    <!-- Pulsanti SX -->
     <ImageButton
-        android:id="@+id/choose_path_button"
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/movimento3_btn"
+        android:layout_width="190dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginStart="100dp"
         android:background="@color/trasparente"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="220dp"
-        android:layout_marginStart="30dp"
         android:scaleType="centerInside"
-        android:src="@drawable/choose_btn" />
+        android:src="@drawable/outermove_btn" />
 
     <ImageButton
-        android:id="@+id/go_button"
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/movimento2_btn"
+        android:layout_width="190dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginStart="20dp"
         android:background="@color/trasparente"
-        android:layout_marginLeft="490dp"
-        android:layout_marginTop="220dp"
-        android:layout_marginStart="490dp"
         android:scaleType="centerInside"
-        android:src="@drawable/go_btn" />
+        android:src="@drawable/innermove_btn" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="155dp"
-        android:layout_marginTop="277dp"
-        android:layout_marginStart="155dp"
-        android:orientation="horizontal">
+    <!-- Pulsanti DX -->
+    <ImageButton
+        android:id="@+id/movimento1_btn"
+        android:layout_width="115dp"
+        android:layout_height="65dp"
+        android:layout_marginLeft="460dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginStart="460dp"
+        android:background="@color/trasparente"
+        android:scaleType="centerInside"
+        android:src="@drawable/moveforward_btn" />
 
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:scaleType="centerInside"
-            android:src="@drawable/round_label" />
-
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginStart="12dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/score_label" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="309dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/current_round"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="240dp"
-            android:layout_marginStart="240dp"
-            android:text="1"
-            android:textColor="@color/verde" />
-
-        <TextView
-            android:id="@+id/total_round"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/round_totali"
-            android:textColor="@color/verde" />
-
-        <TextView
-            android:id="@+id/score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="140dp"
-            android:layout_marginStart="140dp"
-            android:text="120"
-            android:textColor="@color/verde" />
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/popup_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="POPUP"/>
-        -->
+    <ImageButton
+        android:id="@+id/change_color_btn"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginLeft="365dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginStart="365dp"
+        android:background="@color/trasparente"
+        android:scaleType="centerInside"
+        android:src="@drawable/movebackward_btn" />
 
 </RelativeLayout>

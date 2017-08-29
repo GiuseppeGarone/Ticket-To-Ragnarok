@@ -1,34 +1,28 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
+/*
+ *  Modifiche del 29/08:
+ *
+ *      - pulsanti aggiornati
+ *
+ */
+
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Canvas;
-import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 public class GamePlayingActivity extends AppCompatActivity {
 
-    /*
-    public Button popupButton;
-    public ImageButton choosePathButton;    // Pulsante SCEGLI PERCORSO
-    public ImageButton goButton;            // Pulsante SEGUI PERCORSO
-    public TextView currentRound;           // Round attuale
-    public TextView totalRound;             // Round totali
-    public TextView score;                  // Punteggio
-    public Typeface customFont;             // Font
-    */
-
     public Canvas c = new Canvas();
-    public Button movimentoOrario;
-    public Button movimentoAntiOrario;
-    public Button movimentoInterno;
-    public Button movimentoEsterno;
+    public ImageButton movimentoOrario;
+    public ImageButton movimentoAntiOrario;
+    public ImageButton movimentoInterno;
+    public ImageButton movimentoEsterno;
 
     public boolean controllo = false;
 
@@ -48,7 +42,7 @@ public class GamePlayingActivity extends AppCompatActivity {
         v.setX(100);
         v.draw(c);
 
-        movimentoInterno = (Button)findViewById(R.id.movimento2_btn);
+        movimentoInterno = (ImageButton)findViewById(R.id.movimento2_btn);
         movimentoInterno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,7 +63,7 @@ public class GamePlayingActivity extends AppCompatActivity {
             }
         });
 
-        movimentoEsterno = (Button)findViewById(R.id.movimento3_btn);
+        movimentoEsterno = (ImageButton)findViewById(R.id.movimento3_btn);
         movimentoEsterno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,7 +84,7 @@ public class GamePlayingActivity extends AppCompatActivity {
             }
         });
 
-        movimentoOrario = (Button)findViewById(R.id.movimento1_btn);
+        movimentoOrario = (ImageButton)findViewById(R.id.movimento1_btn);
         movimentoOrario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -123,7 +117,7 @@ public class GamePlayingActivity extends AppCompatActivity {
             }
         });
 
-        movimentoAntiOrario = (Button)findViewById(R.id.change_color_btn);
+        movimentoAntiOrario = (ImageButton)findViewById(R.id.change_color_btn);
         movimentoAntiOrario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -156,20 +150,5 @@ public class GamePlayingActivity extends AppCompatActivity {
             }
         });
 
-
-        /*
-        // Pulsanti
-        choosePathButton = (ImageButton)findViewById(R.id.choose_path_button);
-        goButton = (ImageButton)findViewById(R.id.go_button);
-
-        // TextViews
-        currentRound = (TextView)findViewById(R.id.current_round);
-        score = (TextView)findViewById(R.id.score);
-        totalRound = (TextView)findViewById(R.id.total_round);
-        customFont = Typeface.createFromAsset(getAssets(), "gameplay.ttf");
-        currentRound.setTypeface(customFont);
-        score.setTypeface(customFont);
-        totalRound.setTypeface(customFont);
-        */
     }
 }

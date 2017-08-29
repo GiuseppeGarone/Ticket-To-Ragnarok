@@ -68,6 +68,7 @@ public class MainActivity extends Activity {
 
         unbinder = ButterKnife.bind(this);
 
+        startButton.setImageResource(R.drawable.start_disabled_btn);
         startButton.setEnabled(false);
 
         myIpTextWatcher = new TextWatcher() {
@@ -80,6 +81,7 @@ public class MainActivity extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 if (checkCorrectIp()) {
+                    startButton.setImageResource(R.drawable.start_btn);
                     startButton.setEnabled(true);
 
                     Message msg = mNetworkHandler.obtainMessage();

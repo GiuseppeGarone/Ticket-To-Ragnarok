@@ -1,5 +1,12 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
+/*
+ *  Modifiche del 29/08:
+ *
+ *      - pulsante SAVE SCORE
+ *
+ */
+
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
@@ -7,8 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,11 +26,11 @@ import java.util.ArrayList;
 
 public class WinActivity extends AppCompatActivity {
 
+    EditText editTextName;
+    ImageButton buttonAddScore;
     TextView punti;
     TextView titoloVittoria;
     Typeface customFont;
-    EditText editTextName;
-    Button buttonAddScore;
 
     public int punteggio;
 
@@ -44,7 +51,7 @@ public class WinActivity extends AppCompatActivity {
         punti = (TextView)findViewById(R.id.punteggio);
         titoloVittoria = (TextView)findViewById(R.id.win_activity_title);
         editTextName = (EditText) findViewById(R.id.editTextName);
-        buttonAddScore = (Button) findViewById(R.id.buttonAddScore);
+        buttonAddScore = (ImageButton) findViewById(R.id.buttonAddScore);
 
         customFont = Typeface.createFromAsset(getAssets(), "gameplay.ttf");
         titoloVittoria.setTypeface(customFont);

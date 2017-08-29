@@ -1,18 +1,25 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
+/*
+ *  Modifiche del 29/08:
+ *
+ *      - pulsanti TRY AGAIN e BACK MENU
+ *
+ */
+
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class LoseActivity extends AppCompatActivity {
 
-    public Button tryAgainBtn;
-    public Button backToMenuBtn;
+    public ImageButton tryAgainBtn;
+    public ImageButton backToMenuBtn;
     public TextView titoloPerdita;
     public Typeface customFont;
 
@@ -24,8 +31,8 @@ public class LoseActivity extends AppCompatActivity {
         // Orientamento landscape
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        tryAgainBtn = (Button)findViewById(R.id.try_again_btn);
-        backToMenuBtn = (Button)findViewById(R.id.back_to_menu_btn);
+        tryAgainBtn = (ImageButton)findViewById(R.id.try_again_btn);
+        backToMenuBtn = (ImageButton)findViewById(R.id.back_to_menu_btn);
         titoloPerdita = (TextView)findViewById(R.id.lose_activty_title);
 
         customFont = Typeface.createFromAsset(getAssets(), "gameplay.ttf");

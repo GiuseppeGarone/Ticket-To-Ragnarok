@@ -67,7 +67,7 @@
                 android:layout_marginStart="15dp"
                 android:background="@color/trasparente"
                 android:scaleType="centerInside"
-                android:src="@drawable/top_players_btn" />
+                android:src="@drawable/topplayers_btn" />
 
         </LinearLayout>
 

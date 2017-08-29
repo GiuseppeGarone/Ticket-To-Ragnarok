@@ -1,5 +1,12 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
+/*
+ *  Modifiche del 29/08:
+ *
+ *      - pulsante BACK MENU
+ *
+ */
+
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
@@ -11,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +40,7 @@ public class TopPlayersActivity extends AppCompatActivity {
     public static final String SCORE_ID = "net.simplifiedcoding.firebasedatabaseexample.artistid";*/
 
     //view objects
-    Button buttonBackHome;
+    ImageButton buttonBackHome;
     ListView listViewScores;
     TextView header;
     Typeface customFont;
@@ -61,7 +69,7 @@ public class TopPlayersActivity extends AppCompatActivity {
         customFont = Typeface.createFromAsset(getAssets(), "gameplay.ttf");
         header.setTypeface(customFont);
 
-        buttonBackHome = (Button) findViewById(R.id.buttonBackHome);
+        buttonBackHome = (ImageButton) findViewById(R.id.buttonBackHome);
 
         //list to store scores
         scores = new ArrayList<>();
