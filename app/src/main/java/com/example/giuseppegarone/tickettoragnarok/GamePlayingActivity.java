@@ -24,8 +24,6 @@ public class GamePlayingActivity extends AppCompatActivity {
     public ImageButton movimentoInterno;
     public ImageButton movimentoEsterno;
 
-    public boolean controllo = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,12 +51,6 @@ public class GamePlayingActivity extends AppCompatActivity {
                     v.i = v.i;
                 }
 
-                if(v.finito == true) {
-                    // a.accendere(tutto);
-                    Intent i = new Intent(getApplicationContext(), Popup.class);
-                    startActivity(i);
-                }
-
                 v.invalidate();
             }
         });
@@ -72,12 +64,6 @@ public class GamePlayingActivity extends AppCompatActivity {
                     v.i = v.i - 5;
                 } else {
                     v.i = v.i;
-                }
-
-                if(v.finito == true) {
-                    // a.accendere(tutto);
-                    Intent i = new Intent(getApplicationContext(), Popup.class);
-                    startActivity(i);
                 }
 
                 v.invalidate();
@@ -108,11 +94,6 @@ public class GamePlayingActivity extends AppCompatActivity {
                     }
                 }
 
-                if(v.finito == true) {
-                    Intent i = new Intent(getApplicationContext(), Popup.class);
-                    startActivity(i);
-                }
-
                 v.invalidate();
             }
         });
@@ -139,11 +120,6 @@ public class GamePlayingActivity extends AppCompatActivity {
                         a.accendere(v.i);
                         v.i = v.i - 1;
                     }
-                }
-
-                if(v.finito == true) {
-                    Intent i = new Intent(getApplicationContext(), Popup.class);
-                    startActivity(i);
                 }
 
                 v.invalidate();

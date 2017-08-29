@@ -1,6 +1,7 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -24,8 +25,12 @@ public class DrawView extends View {
     public boolean controllo = false;
     public boolean finito = false;
 
+    Context context;
+
+
     public DrawView(Context context) {
         super(context);
+        this.context=context;
 
         paint.setColor(Color.BLACK);
         paintPart.setColor(Color.RED);
@@ -278,14 +283,10 @@ public class DrawView extends View {
         canvas.drawCircle(giunti.get(h).getCentro().x, giunti.get(h).getCentro().y, 10, paintArr);
         posArrivoFin = giunti.get(h).getCentro();
 
-        // BEPPE, INSERISCI DENTRO l'IF COSA FAR COMPARIRE e togli pure il Log.d di debug
+        //controllo per l'arrivo e apertura popup
         if(posArrivoFin==posAttuale) {
-            //Log.d("funziona", "funziona");
-            /*
-            Intent i = new Intent(getApplicationContext(), Popup.class);
-            startActivity(i);
-            */
-            finito = true;
+            Intent i = new Intent(context, Popup.class);
+            context.startActivity(i);
         }
     }
 
