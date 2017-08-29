@@ -211,7 +211,7 @@ public class MainActivity extends Activity {
             // There should be no Exception
         }
 
-       // spengo tutti i led
+       //spengo tutti i led
         try {
             JSONArray pixels_array = preparePixelsArray();
 
