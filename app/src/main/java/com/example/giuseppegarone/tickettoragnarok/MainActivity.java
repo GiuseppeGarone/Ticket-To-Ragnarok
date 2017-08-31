@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +30,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 public class MainActivity extends Activity {
+    public static final String TAG = "mainActivity:";
 
     Unbinder unbinder;
 
@@ -80,7 +82,8 @@ public class MainActivity extends Activity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                if (checkCorrectIp()) {
+                //if (checkCorrectIp()) {
+                if(createAndCheckIp()){
                     startButton.setImageResource(R.drawable.start_btn);
                     startButton.setEnabled(true);
 
@@ -91,7 +94,6 @@ public class MainActivity extends Activity {
                     msg.sendToTarget();
 
                     handleNetworkRequest(NetworkThread.SET_SERVER_DATA, host_url, host_port ,0);
-
 
                 }
             }
@@ -124,6 +126,37 @@ public class MainActivity extends Activity {
         mNetworkThread = new NetworkThread(mMainHandler);
         mNetworkThread.start();
         mNetworkHandler = mNetworkThread.getNetworkHandler();
+    }
+
+    /**
+     * Create and store in global variables the server address list
+     * @return true if success, false otherwhile
+     */
+    private boolean createAndCheckIp(){
+        StringBuilder sb = new StringBuilder();
+        String port = hostPort.getText().toString();
+        if(hostPort.getText().length() == 0 || port.length() == 0){
+            //Err: no text
+            Log.e(TAG, "No text");
+            return false;
+        }
+        if(Integer.parseInt(port)<0 || Integer.parseInt(port)>65000){
+            //Err: wrong port
+            Log.e(TAG, "Wrong port");
+            return false;
+        }
+        for(int i = 0; i<ip_address_bytes.size(); i++){ //TODO: already check
+            sb.append(ip_address_bytes.get(i));
+            if(i<ip_address_bytes.size()-1){
+                sb.append(".");
+            } else {
+                sb.append(":");
+            }
+        }
+        sb.append(port);
+        Log.d(TAG, "Host url: " + sb.toString());
+        GlobalVariables.setServerURL(sb.toString());
+        return true;
     }
 
     private boolean checkCorrectIp() {
