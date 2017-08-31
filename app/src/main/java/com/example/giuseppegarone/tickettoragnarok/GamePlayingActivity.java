@@ -5,24 +5,40 @@ package com.example.giuseppegarone.tickettoragnarok;
  *
  *      - pulsanti aggiornati
  *
+ *
+ *  Modifiche del 31/08:
+ *
+ *      - riposizionamento ragnatela: v.setX(425); v.setY(70);
+ *
  */
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GamePlayingActivity extends AppCompatActivity {
+
+
+    private String host_url = "192.168.1.32";
+    private int host_port = 8080;
 
     public Canvas c = new Canvas();
     public ImageButton movimentoOrario;
     public ImageButton movimentoAntiOrario;
     public ImageButton movimentoInterno;
     public ImageButton movimentoEsterno;
+
+    List<Point> stradePassate = new ArrayList<Point>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,18 +48,27 @@ public class GamePlayingActivity extends AppCompatActivity {
         // Orientamento landscape
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
+        host_url = getIntent().getExtras().getString("hostUrl");
+        host_port = getIntent().getExtras().getInt("hostPort");
+
+
+
         // Aggiungo la ragnatela sopra il layout .xml
         final DrawView v = new DrawView(this);
-        final AccensioneRagnatela a = new AccensioneRagnatela();
+        final AccensioneRagnatela a = new AccensioneRagnatela(host_url,host_port);
         a.popola();
         addContentView(v, new ViewGroup.LayoutParams(600, 600));
-        v.setX(100);
+        v.setX(425);
+        v.setY(70);
         v.draw(c);
+        stradePassate.add(v.posAttuale);
 
         movimentoInterno = (ImageButton)findViewById(R.id.movimento2_btn);
         movimentoInterno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 if(v.i < 10){
                     a.accendere(v.i+15);
                     v.i = v.i + 5;
@@ -52,6 +77,7 @@ public class GamePlayingActivity extends AppCompatActivity {
                 }
 
                 v.invalidate();
+                stradePassate.add(v.posAttuale);
             }
         });
 
@@ -59,6 +85,8 @@ public class GamePlayingActivity extends AppCompatActivity {
         movimentoEsterno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 if(v.i > 4){
                     a.accendere(v.i+10);
                     v.i = v.i - 5;
@@ -67,6 +95,7 @@ public class GamePlayingActivity extends AppCompatActivity {
                 }
 
                 v.invalidate();
+                stradePassate.add(v.posAttuale);
             }
         });
 
@@ -74,6 +103,8 @@ public class GamePlayingActivity extends AppCompatActivity {
         movimentoOrario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 if(v.i == 4 || v.i == 9 || v.i == 14) {
                     if(v.i == 4) {
                         a.accendere(0);
@@ -95,6 +126,7 @@ public class GamePlayingActivity extends AppCompatActivity {
                 }
 
                 v.invalidate();
+                stradePassate.add(v.posAttuale);
             }
         });
 
@@ -102,6 +134,7 @@ public class GamePlayingActivity extends AppCompatActivity {
         movimentoAntiOrario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if(v.i == 0 || v.i == 5 || v.i == 10) {
                     if(v.i == 0) {
                         a.accendere(0);
@@ -123,6 +156,7 @@ public class GamePlayingActivity extends AppCompatActivity {
                 }
 
                 v.invalidate();
+                stradePassate.add(v.posAttuale);
             }
         });
 

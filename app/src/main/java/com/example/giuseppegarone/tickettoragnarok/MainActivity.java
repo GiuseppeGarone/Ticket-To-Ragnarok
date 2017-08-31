@@ -91,6 +91,8 @@ public class MainActivity extends Activity {
                     msg.sendToTarget();
 
                     handleNetworkRequest(NetworkThread.SET_SERVER_DATA, host_url, host_port ,0);
+
+
                 }
             }
 
@@ -199,6 +201,8 @@ public class MainActivity extends Activity {
     @OnClick(R.id.start_button)
     void startApp(){
 
+
+
         //spengo tutti i pixel del display
         try {
             JSONArray pixels_array = preparePixelsArray();
@@ -227,8 +231,19 @@ public class MainActivity extends Activity {
             e.printStackTrace();
         }
 
-        Intent i = new Intent(getApplicationContext(), GameMenuActivity.class);
-        startActivity(i);
+
+        try {
+            Intent i = new Intent(getApplicationContext(), GameMenuActivity.class);
+            i.putExtra("hostUrl", host_url);
+            i.putExtra("hostPort", host_port);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
+            finish();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
 
     }
 
