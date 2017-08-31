@@ -137,7 +137,7 @@ public class AccensioneRagnatela extends Activity {
         try {
             JSONArray pixels_array = new JSONArray();
             JSONObject tmp;
-            try {
+            /*try {
                 for (int j = 0; j < 1072; j++) {
                     tmp = new JSONObject();
                     tmp.put("a", 0);
@@ -150,6 +150,29 @@ public class AccensioneRagnatela extends Activity {
                         tmp.put("r", 255);
                         tmp.put("g", 0);
                         tmp.put("b", 0);
+                    }
+                    pixels_array.put(tmp);
+                }*/
+            try {
+                for (int j = 0; j < 1072; j++) {
+                    tmp = new JSONObject();
+                    tmp.put("a", 0);
+                    if (j< 522) {
+                        tmp.put("g", 255);
+                        tmp.put("b", 0);
+                        tmp.put("r", 0);
+                    } else if (j < 613) {
+                        tmp.put("r", 255);
+                        tmp.put("g", 0);
+                        tmp.put("b", 0);
+                    } else if (j < 791) {
+                        tmp.put("b", 255);
+                        tmp.put("g", 0);
+                        tmp.put("r", 0);
+                    } else {
+                        tmp.put("b", 255);
+                        tmp.put("g", 0);
+                        tmp.put("r", 255);
                     }
                     pixels_array.put(tmp);
                 }
