@@ -28,6 +28,10 @@ import java.util.List;
 
 public class GamePlayingActivity extends AppCompatActivity {
 
+
+    private String host_url = "192.168.1.32";
+    private int host_port = 8080;
+
     public Canvas c = new Canvas();
     public ImageButton movimentoOrario;
     public ImageButton movimentoAntiOrario;
@@ -43,6 +47,21 @@ public class GamePlayingActivity extends AppCompatActivity {
 
         // Orientamento landscape
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        host_url = getIntent().getExtras().getString("hostUrl");
+        host_port = getIntent().getExtras().getInt("hostPort");
+
+
+        try {
+            Intent i = new Intent(GamePlayingActivity.this, AccensioneRagnatela.class);
+            i.putExtra("hostUrl", host_url);
+            i.putExtra("hostPort", host_port);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
+            finish();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         // Aggiungo la ragnatela sopra il layout .xml
         final DrawView v = new DrawView(this);
