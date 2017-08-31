@@ -133,12 +133,11 @@ public class AccensioneRagnatela {
         int da = daAccendere.partenza;
         int a = daAccendere.arrivo;
 
-        da = 906;
-        a = 973;
+
         try {
             JSONArray pixels_array = new JSONArray();
             JSONObject tmp;
-            /*try {
+            try {
                 for (int j = 0; j < 1072; j++) {
                     tmp = new JSONObject();
                     tmp.put("a", 0);
@@ -153,8 +152,8 @@ public class AccensioneRagnatela {
                         tmp.put("b", 0);
                     }
                     pixels_array.put(tmp);
-                }*/
-            try {
+                }
+            /*try {
                 for (int j = 0; j < 1072; j++) {
                     tmp = new JSONObject();
                     tmp.put("a", 0);
@@ -176,7 +175,7 @@ public class AccensioneRagnatela {
                         tmp.put("r", 255);
                     }
                     pixels_array.put(tmp);
-                }
+                }*/
             } catch (JSONException exception) {
                 // No errors expected here
             }
