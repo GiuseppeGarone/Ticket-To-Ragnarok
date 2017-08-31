@@ -13,10 +13,15 @@ import java.util.List;
 
 public class AccensioneRagnatela extends Activity {
 
+    private String host_url = "192.168.1.32";
+    private int host_port = 8080;
+
+
+
     private JSONArray pixels_array;
 
     List<SegmentoRagnatelaFisica> possibiliSegmenti = new ArrayList<SegmentoRagnatelaFisica>();
-    public int k;
+    //public int k;
     private NetworkThread mNetworkThread = null;
     private Handler mNetworkHandler, mMainHandler;
 
@@ -104,6 +109,16 @@ public class AccensioneRagnatela extends Activity {
     }
 
     public void accendere(int i) {
+
+
+        host_url = getIntent().getExtras().getString("hostUrl");
+        host_port = getIntent().getExtras().getInt("hostPort");
+
+        mNetworkThread = new NetworkThread(mMainHandler);
+        mNetworkThread.start();
+        mNetworkHandler = mNetworkThread.getNetworkHandler();
+        handleNetworkRequest(NetworkThread.SET_SERVER_DATA, host_url, host_port ,0);
+
 
         SegmentoRagnatelaFisica daAccendere = possibiliSegmenti.get(i);
 
