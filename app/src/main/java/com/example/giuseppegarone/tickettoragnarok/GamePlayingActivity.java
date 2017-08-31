@@ -13,6 +13,7 @@ package com.example.giuseppegarone.tickettoragnarok;
  */
 
 import android.content.Intent;
+import static com.example.giuseppegarone.tickettoragnarok.GlobalVariables.*;
 import android.content.pm.ActivityInfo;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -29,8 +30,8 @@ import java.util.List;
 public class GamePlayingActivity extends AppCompatActivity {
 
 
-    private String host_url = "192.168.1.32";
-    private int host_port = 8080;
+    //private String host_url = "192.168.1.32";
+    //private int host_port = 8080;
 
     public Canvas c = new Canvas();
     public ImageButton movimentoOrario;
@@ -48,14 +49,15 @@ public class GamePlayingActivity extends AppCompatActivity {
         // Orientamento landscape
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        host_url = getIntent().getExtras().getString("hostUrl");
-        host_port = getIntent().getExtras().getInt("hostPort");
+
+        //host_url = getIntent().getExtras().getString("hostUrl");
+        //host_port = getIntent().getExtras().getInt("hostPort");
 
 
 
         // Aggiungo la ragnatela sopra il layout .xml
         final DrawView v = new DrawView(this);
-        final AccensioneRagnatela a = new AccensioneRagnatela(host_url,host_port);
+        final AccensioneRagnatela a = new AccensioneRagnatela(RAW_IP,RAW_PORT);
         a.popola();
         addContentView(v, new ViewGroup.LayoutParams(600, 600));
         v.setX(425);
