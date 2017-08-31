@@ -12,6 +12,7 @@ package com.example.giuseppegarone.tickettoragnarok;
  *
  */
 
+import android.content.Context;
 import android.content.Intent;
 import static com.example.giuseppegarone.tickettoragnarok.GlobalVariables.*;
 import android.content.pm.ActivityInfo;
@@ -41,11 +42,14 @@ public class GamePlayingActivity extends AppCompatActivity {
 
     List<Point> stradePassate = new ArrayList<Point>();
 
+    Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_playing);
 
+        context = this;
         // Orientamento landscape
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
@@ -57,7 +61,7 @@ public class GamePlayingActivity extends AppCompatActivity {
 
         // Aggiungo la ragnatela sopra il layout .xml
         final DrawView v = new DrawView(this);
-        final AccensioneRagnatela a = new AccensioneRagnatela(RAW_IP,RAW_PORT);
+        final AccensioneRagnatela a = new AccensioneRagnatela();
         a.popola();
         addContentView(v, new ViewGroup.LayoutParams(600, 600));
         v.setX(425);
@@ -72,7 +76,7 @@ public class GamePlayingActivity extends AppCompatActivity {
 
 
                 if(v.i < 10){
-                    a.accendere(v.i+15);
+                    a.accendere(v.i+15, context);
                     v.i = v.i + 5;
                 } else {
                     v.i = v.i;
@@ -90,7 +94,7 @@ public class GamePlayingActivity extends AppCompatActivity {
 
 
                 if(v.i > 4){
-                    a.accendere(v.i+10);
+                    a.accendere(v.i+10, context);
                     v.i = v.i - 5;
                 } else {
                     v.i = v.i;
@@ -109,20 +113,20 @@ public class GamePlayingActivity extends AppCompatActivity {
 
                 if(v.i == 4 || v.i == 9 || v.i == 14) {
                     if(v.i == 4) {
-                        a.accendere(0);
+                        a.accendere(0, context);
                         v.i = 0;
                     }
                     if(v.i == 9) {
-                        a.accendere(5);
+                        a.accendere(5, context);
                         v.i = 5;
                     }
                     if(v.i == 14) {
-                        a.accendere(10);
+                        a.accendere(10, context);
                         v.i = 10;
                     }
                 } else {
                     if(v.i == 0 || v.i == 1 || v.i == 2 || v.i == 3 || v.i == 5 || v.i == 6 || v.i == 7 || v.i == 8 || v.i == 10 || v.i == 11 || v.i == 12 || v.i == 13) {
-                        a.accendere(v.i+1);
+                        a.accendere(v.i+1, context);
                         v.i = v.i + 1;
                     }
                 }
@@ -139,20 +143,20 @@ public class GamePlayingActivity extends AppCompatActivity {
 
                 if(v.i == 0 || v.i == 5 || v.i == 10) {
                     if(v.i == 0) {
-                        a.accendere(0);
+                        a.accendere(0, context);
                         v.i = 4;
                     }
                     if(v.i == 5){
-                        a.accendere(5);
+                        a.accendere(5, context);
                         v.i = 9;
                     }
                     if(v.i == 10){
-                        a.accendere(10);
+                        a.accendere(10, context);
                         v.i = 14;
                     }
                 } else {
                     if(v.i == 1 || v.i == 2 || v.i == 3 || v.i == 4 || v.i == 6 || v.i == 7 || v.i == 8 || v.i == 9 || v.i == 11 || v.i == 12 || v.i == 13 || v.i == 14) {
-                        a.accendere(v.i);
+                        a.accendere(v.i, context);
                         v.i = v.i - 1;
                     }
                 }

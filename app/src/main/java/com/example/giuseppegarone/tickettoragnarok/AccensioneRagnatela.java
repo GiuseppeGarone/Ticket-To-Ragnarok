@@ -1,8 +1,10 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -12,10 +14,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AccensioneRagnatela extends Activity {
-
-    private String host_url = "192.168.1.32";
-    private int host_port = 8080;
+public class AccensioneRagnatela {
+    public static final String TAG = "accensioneRagnatela";
+    //private String host_url = "192.168.1.32";
+    //private int host_port = 8080;
     private ArrayList<SegmentoRagnatelaFisica> segmenti = new ArrayList<>();
 
 
@@ -83,13 +85,13 @@ public class AccensioneRagnatela extends Activity {
     SegmentoRagnatelaFisica segmento25 = new SegmentoRagnatelaFisica();
     boolean bho25 = segmento25.setPartenzaArrivo(221, 231);
 
-
+/*
     public AccensioneRagnatela(String host_url,int host_port)
     {
         this.host_port = host_port;
         this.host_url = host_url;
     }
-
+*/
 
     public void popola() {
 
@@ -120,7 +122,18 @@ public class AccensioneRagnatela extends Activity {
         possibiliSegmenti.add(segmento25);
     }
 
-    public void accendere(int i) {
+    public void accendere(int i, final Context ctx) {
+
+        mMainHandler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                try{
+                    Toast.makeText(ctx, (String) msg.obj, Toast.LENGTH_LONG).show();
+                } catch(Exception e){
+                    Log.wtf(TAG, e);
+                }
+            }
+        };
 
 
         mNetworkThread = new NetworkThread(mMainHandler);
@@ -180,17 +193,6 @@ public class AccensioneRagnatela extends Activity {
             } catch (JSONException exception) {
                 // No errors expected here
             }
-
-            mMainHandler = new Handler() {
-                @Override
-                public void handleMessage(Message msg) {
-                    Toast.makeText(AccensioneRagnatela.this, (String) msg.obj, Toast.LENGTH_LONG).show();
-                }
-            };
-
-            mNetworkThread = new NetworkThread(mMainHandler);
-            mNetworkThread.start();
-            mNetworkHandler = mNetworkThread.getNetworkHandler();
 
             handleNetworkRequest(NetworkThread.SET_PIXELS, pixels_array, 0, 0);
         } catch (Exception e) {
