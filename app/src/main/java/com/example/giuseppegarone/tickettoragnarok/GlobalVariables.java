@@ -8,6 +8,7 @@ public class GlobalVariables {
     private static String serverURL = null;
 
     public static String getServerURL(){
+        //Log.d(TAG, )
         return serverURL;
     }
 

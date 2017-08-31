@@ -83,8 +83,9 @@ public class MainActivity extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 //if (checkCorrectIp()) {
-                if(createAndCheckIp()){
+                if(checkCorrectIp()){
                     startButton.setImageResource(R.drawable.start_btn);
+                    createAndCheckIp(); //PORKAROUND
                     startButton.setEnabled(true);
 
                     Message msg = mNetworkHandler.obtainMessage();
