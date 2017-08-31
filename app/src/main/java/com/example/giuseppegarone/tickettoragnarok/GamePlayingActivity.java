@@ -52,16 +52,6 @@ public class GamePlayingActivity extends AppCompatActivity {
         host_port = getIntent().getExtras().getInt("hostPort");
 
 
-        try {
-            Intent i = new Intent(GamePlayingActivity.this, AccensioneRagnatela.class);
-            i.putExtra("hostUrl", host_url);
-            i.putExtra("hostPort", host_port);
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(i);
-            finish();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
 
         // Aggiungo la ragnatela sopra il layout .xml
         final DrawView v = new DrawView(this);
@@ -77,6 +67,18 @@ public class GamePlayingActivity extends AppCompatActivity {
         movimentoInterno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                try {
+                    Intent i = new Intent(GamePlayingActivity.this, AccensioneRagnatela.class);
+                    i.putExtra("hostUrl", host_url);
+                    i.putExtra("hostPort", host_port);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(i);
+                    finish();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
                 if(v.i < 10){
                     a.accendere(v.i+15);
                     v.i = v.i + 5;
@@ -93,6 +95,18 @@ public class GamePlayingActivity extends AppCompatActivity {
         movimentoEsterno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                try {
+                    Intent i = new Intent(GamePlayingActivity.this, AccensioneRagnatela.class);
+                    i.putExtra("hostUrl", host_url);
+                    i.putExtra("hostPort", host_port);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(i);
+                    finish();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
                 if(v.i > 4){
                     a.accendere(v.i+10);
                     v.i = v.i - 5;
@@ -109,6 +123,17 @@ public class GamePlayingActivity extends AppCompatActivity {
         movimentoOrario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                try {
+                    Intent i = new Intent(GamePlayingActivity.this, AccensioneRagnatela.class);
+                    i.putExtra("hostUrl", host_url);
+                    i.putExtra("hostPort", host_port);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(i);
+                    finish();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
                 if(v.i == 4 || v.i == 9 || v.i == 14) {
                     if(v.i == 4) {
                         a.accendere(0);
@@ -138,6 +163,17 @@ public class GamePlayingActivity extends AppCompatActivity {
         movimentoAntiOrario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                try {
+                    Intent i = new Intent(GamePlayingActivity.this, AccensioneRagnatela.class);
+                    i.putExtra("hostUrl", host_url);
+                    i.putExtra("hostPort", host_port);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(i);
+                    finish();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
                 if(v.i == 0 || v.i == 5 || v.i == 10) {
                     if(v.i == 0) {
                         a.accendere(0);
