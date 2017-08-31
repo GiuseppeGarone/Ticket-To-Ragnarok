@@ -147,7 +147,7 @@ public class MainActivity extends Activity {
             return false;
         }
         for(int i = 0; i<ip_address_bytes.size(); i++){ //TODO: already check
-            sb.append(ip_address_bytes.get(i));
+            sb.append(ip_address_bytes.get(i).getText());
             if(i<ip_address_bytes.size()-1){
                 sb.append(".");
             } else {
