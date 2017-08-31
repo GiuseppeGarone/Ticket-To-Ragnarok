@@ -119,9 +119,6 @@ public class AccensioneRagnatela extends Activity {
     public void accendere(int i) {
 
 
-        host_url = getIntent().getExtras().getString("hostUrl");
-        host_port = getIntent().getExtras().getInt("hostPort");
-
         mNetworkThread = new NetworkThread(mMainHandler);
         mNetworkThread.start();
         mNetworkHandler = mNetworkThread.getNetworkHandler();
