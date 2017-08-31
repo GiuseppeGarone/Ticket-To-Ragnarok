@@ -142,13 +142,14 @@ public class AccensioneRagnatela extends Activity {
                     tmp = new JSONObject();
                     tmp.put("a", 0);
                     if (j < da || j > a) {
-                        tmp.put("g", 0);
-                        tmp.put("popupButton", 0);
                         tmp.put("r", 0);
+                        tmp.put("g", 0);
+                        tmp.put("b", 0);
+
                     } else if (j < a && j > da) {
                         tmp.put("r", 255);
                         tmp.put("g", 0);
-                        tmp.put("popupButton", 0);
+                        tmp.put("b", 0);
                     }
                     pixels_array.put(tmp);
                 }
