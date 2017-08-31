@@ -19,11 +19,14 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,16 +43,18 @@ public class GamePlayingActivity extends AppCompatActivity {
     public ImageButton movimentoInterno;
     public ImageButton movimentoEsterno;
 
+
+    private NetworkThread mNetworkThread = null;
+    private Handler mNetworkHandler, mMainHandler;
+
     List<Point> stradePassate = new ArrayList<Point>();
 
-    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_playing);
 
-        context = this;
         // Orientamento landscape
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
@@ -76,7 +81,7 @@ public class GamePlayingActivity extends AppCompatActivity {
 
 
                 if(v.i < 10){
-                    a.accendere(v.i+15, context);
+                    a.accendere(v.i+15, GamePlayingActivity.this);
                     v.i = v.i + 5;
                 } else {
                     v.i = v.i;
@@ -94,7 +99,7 @@ public class GamePlayingActivity extends AppCompatActivity {
 
 
                 if(v.i > 4){
-                    a.accendere(v.i+10, context);
+                    a.accendere(v.i+10, GamePlayingActivity.this);
                     v.i = v.i - 5;
                 } else {
                     v.i = v.i;
@@ -113,20 +118,20 @@ public class GamePlayingActivity extends AppCompatActivity {
 
                 if(v.i == 4 || v.i == 9 || v.i == 14) {
                     if(v.i == 4) {
-                        a.accendere(0, context);
+                        a.accendere(0, GamePlayingActivity.this);
                         v.i = 0;
                     }
                     if(v.i == 9) {
-                        a.accendere(5, context);
+                        a.accendere(5, GamePlayingActivity.this);
                         v.i = 5;
                     }
                     if(v.i == 14) {
-                        a.accendere(10, context);
+                        a.accendere(10, GamePlayingActivity.this);
                         v.i = 10;
                     }
                 } else {
                     if(v.i == 0 || v.i == 1 || v.i == 2 || v.i == 3 || v.i == 5 || v.i == 6 || v.i == 7 || v.i == 8 || v.i == 10 || v.i == 11 || v.i == 12 || v.i == 13) {
-                        a.accendere(v.i+1, context);
+                        a.accendere(v.i+1, GamePlayingActivity.this);
                         v.i = v.i + 1;
                     }
                 }
@@ -143,20 +148,20 @@ public class GamePlayingActivity extends AppCompatActivity {
 
                 if(v.i == 0 || v.i == 5 || v.i == 10) {
                     if(v.i == 0) {
-                        a.accendere(0, context);
+                        a.accendere(0, GamePlayingActivity.this);
                         v.i = 4;
                     }
                     if(v.i == 5){
-                        a.accendere(5, context);
+                        a.accendere(5, GamePlayingActivity.this);
                         v.i = 9;
                     }
                     if(v.i == 10){
-                        a.accendere(10, context);
+                        a.accendere(10, GamePlayingActivity.this);
                         v.i = 14;
                     }
                 } else {
                     if(v.i == 1 || v.i == 2 || v.i == 3 || v.i == 4 || v.i == 6 || v.i == 7 || v.i == 8 || v.i == 9 || v.i == 11 || v.i == 12 || v.i == 13 || v.i == 14) {
-                        a.accendere(v.i, context);
+                        a.accendere(v.i, GamePlayingActivity.this);
                         v.i = v.i - 1;
                     }
                 }
@@ -167,4 +172,48 @@ public class GamePlayingActivity extends AppCompatActivity {
         });
 
     }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startHandlerThread();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mNetworkThread != null && mNetworkHandler != null) {
+            mNetworkHandler.removeMessages(mNetworkThread.SET_PIXELS);
+            mNetworkHandler.removeMessages(mNetworkThread.SET_DISPLAY_PIXELS);
+            mNetworkHandler.removeMessages(mNetworkThread.SET_SERVER_DATA);
+            mNetworkThread.quit();
+            try {
+                mNetworkThread.join(100);
+            } catch (InterruptedException ie) {
+                throw new RuntimeException(ie);
+            } finally {
+                mNetworkThread = null;
+                mNetworkHandler = null;
+            }
+        }
+    }
+
+    public void startHandlerThread() {
+        mMainHandler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                Toast.makeText(GamePlayingActivity.this, (String) msg.obj, Toast.LENGTH_LONG).show();
+            }
+        };
+        mNetworkThread = new NetworkThread(mMainHandler);
+        mNetworkThread.start();
+        mNetworkHandler = mNetworkThread.getNetworkHandler();
+    }
+
+    public Handler getNewtworkHandler() {
+        return mNetworkHandler;
+    }
+
+
 }

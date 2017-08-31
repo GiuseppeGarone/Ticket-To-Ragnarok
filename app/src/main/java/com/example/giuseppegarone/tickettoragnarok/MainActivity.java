@@ -86,13 +86,6 @@ public class MainActivity extends Activity {
                     createAndCheckIp(); //PORKAROUND
                     startButton.setEnabled(true);
 
-                    Message msg = mNetworkHandler.obtainMessage();
-                    msg.what = NetworkThread.SET_SERVER_DATA;
-                    msg.obj = host_url;
-                    msg.arg1 = host_port;
-                    msg.sendToTarget();
-
-                    handleNetworkRequest(NetworkThread.SET_SERVER_DATA, host_url, host_port ,0);
 
                 }
             }
@@ -118,7 +111,6 @@ public class MainActivity extends Activity {
             }
         };
 
-        startHandlerThread();
     }
 
     public void startHandlerThread() {
@@ -210,16 +202,19 @@ public class MainActivity extends Activity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unbinder.unbind();
+    protected void onResume() {
+        super.onResume();
+        startHandlerThread();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
         if (mNetworkThread != null && mNetworkHandler != null) {
-            mNetworkHandler.removeMessages(mNetworkThread.SET_PIXELS);
-            mNetworkHandler.removeMessages(mNetworkThread.SET_DISPLAY_PIXELS);
-            mNetworkHandler.removeMessages(mNetworkThread.SET_SERVER_DATA);
-            mNetworkThread.quit();
+            mNetworkThread.quitSafely();
             try {
-                mNetworkThread.join(100);
+                mNetworkThread.join();
             } catch (InterruptedException ie) {
                 throw new RuntimeException(ie);
             } finally {
@@ -227,6 +222,13 @@ public class MainActivity extends Activity {
                 mNetworkHandler = null;
             }
         }
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 
     // Listener pulsante START
@@ -234,15 +236,20 @@ public class MainActivity extends Activity {
     void startApp(){
 
 
+        handleNetworkRequest(NetworkThread.SET_SERVER_DATA, host_url, host_port ,0);
 
+        final int DISPLAY_SIZE = 1024;
+        final int LED_SIZE = 1072;
         //spengo tutti i pixel del display
         try {
-            JSONArray pixels_array = preparePixelsArray();
+            JSONArray pixels_array = new JSONArray();
 
-            for (int i = 0; i < pixels_array.length(); i++) {
-                ((JSONObject) pixels_array.get(i)).put("r", 0);
-                ((JSONObject) pixels_array.get(i)).put("g", 0);
-                ((JSONObject) pixels_array.get(i)).put("b", 0);
+            for (int i = 0; i < DISPLAY_SIZE; i++) {
+                JSONObject o=new JSONObject();
+                o.put("r", 0);
+                o.put("g", 0);
+                o.put("b", 0);
+                pixels_array.put(o);
             }
             handleNetworkRequest(NetworkThread.SET_DISPLAY_PIXELS, pixels_array, 0 ,0);
         } catch (JSONException e) {
@@ -251,12 +258,14 @@ public class MainActivity extends Activity {
 
        //spengo tutti i led
         try {
-            JSONArray pixels_array = preparePixelsArray();
+            JSONArray pixels_array = new JSONArray();
 
-            for (int i = 0; i < pixels_array.length(); i++) {
-                ((JSONObject) pixels_array.get(i)).put("r", 0);
-                ((JSONObject) pixels_array.get(i)).put("g", 0);
-                ((JSONObject) pixels_array.get(i)).put("b", 0);
+            for (int i = 0; i < LED_SIZE; i++) {
+                JSONObject o=new JSONObject();
+                o.put("r", 0);
+                o.put("g", 0);
+                o.put("b", 0);
+                pixels_array.put(o);
             }
             handleNetworkRequest(NetworkThread.SET_PIXELS, pixels_array, 0 ,0);
         } catch (Exception e) {

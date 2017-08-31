@@ -122,23 +122,10 @@ public class AccensioneRagnatela {
         possibiliSegmenti.add(segmento25);
     }
 
-    public void accendere(int i, final Context ctx) {
-
-        mMainHandler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                try{
-                    Toast.makeText(ctx, (String) msg.obj, Toast.LENGTH_LONG).show();
-                } catch(Exception e){
-                    Log.wtf(TAG, e);
-                }
-            }
-        };
+    public void accendere(int i, final GamePlayingActivity ctx) {
 
 
-        mNetworkThread = new NetworkThread(mMainHandler);
-        mNetworkThread.start();
-        mNetworkHandler = mNetworkThread.getNetworkHandler();
+        mNetworkHandler = ctx.getNewtworkHandler();
 
 
         SegmentoRagnatelaFisica daAccendere = possibiliSegmenti.get(i);
