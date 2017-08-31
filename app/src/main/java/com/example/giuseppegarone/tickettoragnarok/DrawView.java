@@ -27,21 +27,24 @@ public class DrawView extends View {
 
     Context context;
 
-
     public DrawView(Context context) {
         super(context);
         this.context=context;
 
-        paint.setColor(Color.BLACK);
+        int coloreGiuntoPartenza = context.getResources().getColor(R.color.giuntoPartenza);
+        int coloreGiuntoArrivo = context.getResources().getColor(R.color.giuntoArrivo);
 
-        paintPart.setColor(Color.RED);
-        paintArr.setColor(Color.GREEN);
+        paintPart.setColor(coloreGiuntoPartenza);
+        paintArr.setColor(coloreGiuntoArrivo);
+        paint.setColor(Color.BLACK);
         paintProva.setColor(Color.BLUE);
 
         paint.setAntiAlias(true);
         paintPart.setAntiAlias(true);
         paintArr.setAntiAlias(true);
         paintProva.setAntiAlias(true);
+
+        paint.setStrokeWidth(4);
     }
 
     public void startRandom() {
