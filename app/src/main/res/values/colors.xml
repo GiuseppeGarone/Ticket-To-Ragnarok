@@ -8,6 +8,10 @@
 
     <!-- Custom colors -->
     <color name="bianco">#fff</color>
+    <color name="dotActive">#24baac</color>
+    <color name="dotNonActive">#187a71</color>
+    <color name="giuntoPartenza">#1dc3b1</color>
+    <color name="giuntoArrivo">#f26f4f</color>
     <color name="marrone">#914e3f</color>
     <color name="nero">#000</color>
     <color name="popup">#ececec</color>

@@ -64,8 +64,11 @@ public class DrawView extends View {
     @Override
     public void onDraw(Canvas canvas) {
 
+        final GamePlayingActivity gp = new GamePlayingActivity();
+
         List<Point> possibiliDirezioni = new ArrayList<Point>();
         List<Giunto> giunti = new ArrayList<Giunto>();
+
         Point p = new Point(100, 300);
         Point p1 = new Point(300, 300);
         Point p2 = new Point(50, 150);
@@ -287,6 +290,17 @@ public class DrawView extends View {
         if(posArrivoFin==posAttuale) {
             Intent i = new Intent(context, Popup.class);
             context.startActivity(i);
+        }
+
+        for(int y = 0; y < gp.stradePassate.size(); y++) {
+            Point part = gp.stradePassate.get(y);
+
+            if(gp.stradePassate.get(y+1) == null) {
+                break;
+            }
+
+            Point arr = gp.stradePassate.get(y+1);
+            canvas.drawLine(part.x, part.y, arr.x, arr.y, paintPart);
         }
     }
 
