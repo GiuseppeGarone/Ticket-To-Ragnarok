@@ -3,6 +3,7 @@ package com.example.giuseppegarone.tickettoragnarok;
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Message;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -180,6 +181,16 @@ public class AccensioneRagnatela extends Activity {
                 // No errors expected here
             }
 
+            mMainHandler = new Handler() {
+                @Override
+                public void handleMessage(Message msg) {
+                    Toast.makeText(AccensioneRagnatela.this, (String) msg.obj, Toast.LENGTH_LONG).show();
+                }
+            };
+
+            mNetworkThread = new NetworkThread(mMainHandler);
+            mNetworkThread.start();
+            mNetworkHandler = mNetworkThread.getNetworkHandler();
 
             handleNetworkRequest(NetworkThread.SET_PIXELS, pixels_array, 0, 0);
         } catch (Exception e) {
