@@ -43,7 +43,6 @@ public class LoseActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), GamePlayingActivity.class);
-                i.putExtra("sender", "loseactivity");
                 startActivity(i);
             }
         });
@@ -52,6 +51,7 @@ public class LoseActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), GameMenuActivity.class);
+                i.putExtra("sender", "loseactivity");
                 startActivity(i);
             }
         });

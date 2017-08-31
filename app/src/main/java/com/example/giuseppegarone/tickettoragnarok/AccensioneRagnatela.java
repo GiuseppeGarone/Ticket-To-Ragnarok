@@ -15,7 +15,7 @@ public class AccensioneRagnatela extends Activity {
 
     private String host_url = "192.168.1.32";
     private int host_port = 8080;
-
+    private ArrayList<SegmentoRagnatelaFisica> segmenti = new ArrayList<>();
 
 
     private JSONArray pixels_array;
@@ -24,6 +24,8 @@ public class AccensioneRagnatela extends Activity {
     //public int k;
     private NetworkThread mNetworkThread = null;
     private Handler mNetworkHandler, mMainHandler;
+
+
 
     SegmentoRagnatelaFisica segmento1 = new SegmentoRagnatelaFisica();
     boolean bho1 = segmento1.setPartenzaArrivo(906, 973);
@@ -89,6 +91,7 @@ public class AccensioneRagnatela extends Activity {
 
 
     public void popola() {
+
         possibiliSegmenti.add(segmento1);
         possibiliSegmenti.add(segmento2);
         possibiliSegmenti.add(segmento3);
