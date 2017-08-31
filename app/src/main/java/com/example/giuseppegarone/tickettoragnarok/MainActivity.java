@@ -233,7 +233,7 @@ public class MainActivity extends Activity {
 
 
         try {
-            Intent i = new Intent(MainActivity.this, GamePlayingActivity.class);
+            Intent i = new Intent(getApplicationContext(), GameMenuActivity.class);
             i.putExtra("hostUrl", host_url);
             i.putExtra("hostPort", host_port);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);

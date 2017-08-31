@@ -80,6 +80,14 @@ public class AccensioneRagnatela extends Activity {
     SegmentoRagnatelaFisica segmento25 = new SegmentoRagnatelaFisica();
     boolean bho25 = segmento25.setPartenzaArrivo(221, 231);
 
+
+    public AccensioneRagnatela(String host_url,int host_port)
+    {
+        this.host_port = host_port;
+        this.host_url = host_url;
+    }
+
+
     public void popola() {
         possibiliSegmenti.add(segmento1);
         possibiliSegmenti.add(segmento2);
@@ -117,7 +125,6 @@ public class AccensioneRagnatela extends Activity {
         mNetworkThread = new NetworkThread(mMainHandler);
         mNetworkThread.start();
         mNetworkHandler = mNetworkThread.getNetworkHandler();
-        handleNetworkRequest(NetworkThread.SET_SERVER_DATA, host_url, host_port ,0);
 
 
         SegmentoRagnatelaFisica daAccendere = possibiliSegmenti.get(i);

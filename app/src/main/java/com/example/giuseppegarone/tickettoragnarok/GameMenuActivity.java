@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 public class GameMenuActivity extends AppCompatActivity {
 
+    private String host_url = "192.168.1.32";
+    private int host_port = 8080;
     public ImageButton playButton;          // Pulsante PLAY
     public ImageButton tutorialButton;      // Pulsante TUTORIAL
     public ImageButton topPlayersButton;    // Pulsante TOP PLAYERS
@@ -24,6 +26,9 @@ public class GameMenuActivity extends AppCompatActivity {
 
         // Orientamento landscape
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        host_url = getIntent().getExtras().getString("hostUrl");
+        host_port = getIntent().getExtras().getInt("hostPort");
 
         // Crediti
         creditsView = (TextView)findViewById(R.id.credits);
@@ -40,7 +45,11 @@ public class GameMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), GamePlayingActivity.class);
+                i.putExtra("hostUrl", host_url);
+                i.putExtra("hostPort", host_port);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
+                finish();
             }
         });
 
