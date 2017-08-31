@@ -17,6 +17,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class NetworkThread extends HandlerThread {
+    public static final String TAG = "networkThread";
 
     public final static int SET_PIXELS = 1;
     public final static int SET_DISPLAY_PIXELS = 2;
@@ -34,7 +35,7 @@ public class NetworkThread extends HandlerThread {
     public NetworkThread(Handler mainThreadHandler) {
         super("NetworkThread");
         this.setDaemon(false);
-        this.mMainThreadHandler = mainThreadHandler;
+        this.mMainThreadHandler = mainThreadHandler; //TODO: this is something null
     }
 
     @Override
@@ -87,6 +88,10 @@ public class NetworkThread extends HandlerThread {
             Log.d("POST_RESULT", response.body().string());
         } catch (IOException e) {
             //network error, notify the main thread throught it's handler
+            if(mMainThreadHandler == null){
+                Log.e(TAG, "WTF! mMessageHandler is null");
+                return;
+            }
             Message msg = mMainThreadHandler.obtainMessage();
             msg.obj = e.getMessage();
             msg.sendToTarget();

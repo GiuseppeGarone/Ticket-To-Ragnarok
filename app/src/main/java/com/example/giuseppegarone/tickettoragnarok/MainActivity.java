@@ -10,8 +10,6 @@ import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -156,7 +154,7 @@ public class MainActivity extends Activity {
         }
         sb.append(port);
         Log.d(TAG, "Host url: " + sb.toString());
-        GlobalVariables.setServerURL(sb.toString());
+        GlobalVariables.setParsedServerURL(sb.toString());
         return true;
     }
 
@@ -268,6 +266,7 @@ public class MainActivity extends Activity {
 
         try {
             Intent i = new Intent(getApplicationContext(), GameMenuActivity.class);
+            i.putExtra("sender", "splashscreen");
             i.putExtra("hostUrl", host_url);
             i.putExtra("hostPort", host_port);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);

@@ -79,6 +79,7 @@ public class TopPlayersActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), GameMenuActivity.class);
+                i.putExtra("sender", "winactivity");
                 startActivity(i);
             }
         });

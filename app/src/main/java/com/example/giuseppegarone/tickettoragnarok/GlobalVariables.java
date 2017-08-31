@@ -5,15 +5,22 @@ package com.example.giuseppegarone.tickettoragnarok;
  */
 
 public class GlobalVariables {
-    private static String serverURL = null;
+    private static String parsedServerURL = null;
 
-    public static String getServerURL(){
+    public static int RAW_PORT = 8080;
+    public static String RAW_IP = "192.168.1.32";
+
+    public static String getParsedServerURL(){
         //Log.d(TAG, )
-        return serverURL;
+        return parsedServerURL;
     }
 
-    public static void setServerURL(String url){
-        serverURL = url;
+    public static void setParsedServerURL(String url){
+        parsedServerURL = url;
     }
+
+
+
+
 
 }
