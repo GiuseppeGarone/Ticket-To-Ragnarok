@@ -132,6 +132,8 @@ public class AccensioneRagnatela extends Activity {
         int da = daAccendere.partenza;
         int a = daAccendere.arrivo;
 
+        da = 300;
+        a = 360;
         try {
             JSONArray pixels_array = new JSONArray();
             JSONObject tmp;
