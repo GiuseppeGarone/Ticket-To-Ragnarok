@@ -5,16 +5,26 @@ package com.example.giuseppegarone.tickettoragnarok;
  *
  *      - pulsanti aggiornati
  *
+ *
+ *  Modifiche del 31/08:
+ *
+ *      - riposizionamento ragnatela: v.setX(425); v.setY(70);
+ *
  */
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GamePlayingActivity extends AppCompatActivity {
 
@@ -23,6 +33,8 @@ public class GamePlayingActivity extends AppCompatActivity {
     public ImageButton movimentoAntiOrario;
     public ImageButton movimentoInterno;
     public ImageButton movimentoEsterno;
+
+    List<Point> stradePassate = new ArrayList<Point>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +49,10 @@ public class GamePlayingActivity extends AppCompatActivity {
         final AccensioneRagnatela a = new AccensioneRagnatela();
         a.popola();
         addContentView(v, new ViewGroup.LayoutParams(600, 600));
-        v.setX(100);
+        v.setX(425);
+        v.setY(70);
         v.draw(c);
+        stradePassate.add(v.posAttuale);
 
         movimentoInterno = (ImageButton)findViewById(R.id.movimento2_btn);
         movimentoInterno.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +66,7 @@ public class GamePlayingActivity extends AppCompatActivity {
                 }
 
                 v.invalidate();
+                stradePassate.add(v.posAttuale);
             }
         });
 
@@ -67,6 +82,7 @@ public class GamePlayingActivity extends AppCompatActivity {
                 }
 
                 v.invalidate();
+                stradePassate.add(v.posAttuale);
             }
         });
 
@@ -95,6 +111,7 @@ public class GamePlayingActivity extends AppCompatActivity {
                 }
 
                 v.invalidate();
+                stradePassate.add(v.posAttuale);
             }
         });
 
@@ -123,6 +140,7 @@ public class GamePlayingActivity extends AppCompatActivity {
                 }
 
                 v.invalidate();
+                stradePassate.add(v.posAttuale);
             }
         });
 
