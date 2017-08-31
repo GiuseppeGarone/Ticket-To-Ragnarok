@@ -33,6 +33,7 @@ public class DrawView extends View {
         this.context=context;
 
         paint.setColor(Color.BLACK);
+
         paintPart.setColor(Color.RED);
         paintArr.setColor(Color.GREEN);
         paintProva.setColor(Color.BLUE);
