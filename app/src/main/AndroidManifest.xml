@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".GameMenuActivity" />
-        <activity android:name=".GameTutorialActivity" />
+        <activity android:name=".GameTutorialActivity" android:hardwareAccelerated="false"/>
         <activity android:name=".GamePlayingActivity" />
         <activity android:name=".TopPlayersActivity" />
         <activity

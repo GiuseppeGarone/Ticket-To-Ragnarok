@@ -46,7 +46,7 @@ public class TopPlayersList extends ArrayAdapter<Score> {
         Score punteggio = scores.get(getCount()-1-position);
 
         textViewNickname.setText(punteggio.getNickname().toUpperCase());
-        textViewScore.setText(punteggio.getScore());
+        textViewScore.setText(String.valueOf(punteggio.getScore()));
 
         return listViewItem;
     }

@@ -59,7 +59,7 @@ public class WinActivity extends AppCompatActivity {
         // Prelevo punteggio dall'intent
         Bundle extra = getIntent().getExtras();
         punteggio = extra.getInt("punti");
-        punti.setText(Integer.toString(punteggio));
+        punti.setText(String.valueOf(punteggio));
 
         //list to store scores
         //scores = new ArrayList<>();
@@ -85,7 +85,7 @@ public class WinActivity extends AppCompatActivity {
     private void addScore() {
         //getting the values to save
         String nickname = editTextName.getText().toString().trim();
-        String score = Integer.toString(punteggio);
+        int score = punteggio;
 
         //checking if the value is provided
         if (!TextUtils.isEmpty(nickname)) {

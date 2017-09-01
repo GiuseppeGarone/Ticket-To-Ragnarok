@@ -42,8 +42,10 @@ public class Popup extends Activity {
     public CountDownTimer countDownTimer;
     public TextView time;
 
-    public double bonus1 = 0.2;
-    public double bonus2 = 0.5;
+    public double bonus1 = 1.5;
+    public double bonus2 = 2.5;
+    public double bonus3 = 3.5;
+    public double bonus4 = 4.5;
     public int finalScore;
     public int residualTime;
     public int timerDurationSecs = 21;
@@ -246,12 +248,19 @@ public class Popup extends Activity {
 
     // Calcolo punteggio
     public int scoreBonus (int n) {
-        if(n > 14) {
-            finalScore = n + (int)(n * bonus2);
+        if(n > 17) {
+            finalScore = n + (int)(n * bonus4 * bonus3 * bonus2 * bonus1);
         } else {
-            finalScore = n + (int)(n * bonus1);
+            if(n > 14 && n < 17) {
+                finalScore = n + (int) (n * bonus3 * bonus2 * bonus1);
+            } else {
+                if(n > 10 && n < 14) {
+                    finalScore = n + (int)(n * bonus2 * bonus1);
+                } else {
+                    finalScore = n + (int) (n * bonus1);
+                }
+            }
         }
-
         return finalScore;
     }
 }
