@@ -67,12 +67,16 @@ public class GamePlayingActivity extends AppCompatActivity {
         // Aggiungo la ragnatela sopra il layout .xml
         final DrawView v = new DrawView(this);
         final AccensioneRagnatela a = new AccensioneRagnatela();
-        a.popola();
+
         addContentView(v, new ViewGroup.LayoutParams(600, 600));
         v.setX(425);
         v.setY(70);
         v.draw(c);
         stradePassate.add(v.posAttuale);
+
+        //da riempire
+        //int daPartenza,int aPartenza,int daArrivo,int aArrivo=0;
+        //a.accendiPartenzaArrivo(daPartenza,aPartenza,daArrivo,aArrivo);
 
         movimentoInterno = (ImageButton)findViewById(R.id.movimento2_btn);
         movimentoInterno.setOnClickListener(new View.OnClickListener() {
@@ -198,6 +202,8 @@ public class GamePlayingActivity extends AppCompatActivity {
             }
         }
     }
+
+
 
     public void startHandlerThread() {
         mMainHandler = new Handler() {
