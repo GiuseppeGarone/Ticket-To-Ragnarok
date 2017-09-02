@@ -10,22 +10,39 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".MainActivity"
+            android:screenOrientation="sensorLandscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GameMenuActivity" />
-        <activity android:name=".GameTutorialActivity" android:hardwareAccelerated="false"/>
-        <activity android:name=".GamePlayingActivity" />
-        <activity android:name=".TopPlayersActivity" />
+
+        <activity android:name=".GameMenuActivity"
+            android:screenOrientation="sensorLandscape" />
+
+        <activity android:name=".GameTutorialActivity"
+            android:hardwareAccelerated="false"
+            android:screenOrientation="sensorLandscape" />
+
+        <activity android:name=".GamePlayingActivity"
+            android:screenOrientation="sensorLandscape" />
+
+        <activity android:name=".TopPlayersActivity"
+            android:screenOrientation="sensorLandscape" />
+
         <activity
             android:name=".Popup"
+            android:screenOrientation="sensorLandscape"
             android:theme="@style/AppTheme.PopupTheme" />
-        <activity android:name=".WinActivity" />
-        <activity android:name=".LoseActivity" />
+
+        <activity android:name=".WinActivity"
+            android:screenOrientation="sensorLandscape" />
+
+        <activity android:name=".LoseActivity"
+            android:screenOrientation="sensorLandscape" />
     </application>
 
 </manifest>

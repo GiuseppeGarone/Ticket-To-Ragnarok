@@ -1,17 +1,5 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
-/*
- *  Modifiche del 29/08:
- *
- *      - pulsanti aggiornati
- *
- *
- *  Modifiche del 31/08:
- *
- *      - riposizionamento ragnatela: v.setX(425); v.setY(70);
- *
- */
-
 import android.content.Context;
 import android.content.Intent;
 import static com.example.giuseppegarone.tickettoragnarok.GlobalVariables.*;
@@ -55,13 +43,9 @@ public class GamePlayingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_playing);
 
-        // Orientamento landscape
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
 
         //host_url = getIntent().getExtras().getString("hostUrl");
         //host_port = getIntent().getExtras().getInt("hostPort");
-
 
 
         // Aggiungo la ragnatela sopra il layout .xml
@@ -177,6 +161,10 @@ public class GamePlayingActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        // Disabilito tasto BACK di sistema
+    }
 
     @Override
     protected void onResume() {
@@ -202,8 +190,6 @@ public class GamePlayingActivity extends AppCompatActivity {
             }
         }
     }
-
-
 
     public void startHandlerThread() {
         mMainHandler = new Handler() {

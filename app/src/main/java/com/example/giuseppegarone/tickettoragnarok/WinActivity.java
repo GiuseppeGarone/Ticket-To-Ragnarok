@@ -1,18 +1,12 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
-/*
- *  Modifiche del 29/08:
- *
- *      - pulsante SAVE SCORE
- *
- */
-
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -21,8 +15,6 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.ArrayList;
 
 public class WinActivity extends AppCompatActivity {
 
@@ -33,6 +25,7 @@ public class WinActivity extends AppCompatActivity {
     Typeface customFont;
 
     public int punteggio;
+    public String nomeInserito = "";    // Stringa di prova, ma inutile...
 
     //our database reference object
     DatabaseReference databaseClassifica;
@@ -42,9 +35,6 @@ public class WinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_win);
 
-        // Orientamento landscape
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
         //getting the reference of classifica node
         databaseClassifica = FirebaseDatabase.getInstance().getReference("Classifica");
 
@@ -52,6 +42,9 @@ public class WinActivity extends AppCompatActivity {
         titoloVittoria = (TextView)findViewById(R.id.win_activity_title);
         editTextName = (EditText) findViewById(R.id.editTextName);
         buttonAddScore = (ImageButton) findViewById(R.id.buttonAddScore);
+
+        buttonAddScore.setImageResource(R.drawable.savescore_btn);
+        //buttonAddScore.setEnabled(false);
 
         customFont = Typeface.createFromAsset(getAssets(), "gameplay.ttf");
         titoloVittoria.setTypeface(customFont);
@@ -61,8 +54,18 @@ public class WinActivity extends AppCompatActivity {
         punteggio = extra.getInt("punti");
         punti.setText(String.valueOf(punteggio));
 
-        //list to store scores
-        //scores = new ArrayList<>();
+        nomeInserito = editTextName.getText().toString();
+        Log.d("Nome inserito: ", nomeInserito);
+
+        /*
+        if(editTextName.getText().toString().trim().length() == 0) {
+            buttonAddScore.setImageResource(R.drawable.savescore_btn);
+            buttonAddScore.setEnabled(true);
+        }
+        */
+
+        nomeInserito = editTextName.getText().toString();
+        Log.d("Nome inserito 2: ", nomeInserito);
 
         //adding an onclicklistener to button
         buttonAddScore.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +74,7 @@ public class WinActivity extends AppCompatActivity {
                 //calling the method addScore()
                 //the method is defined below
                 //this method is actually performing the write operation
+
                 addScore();
                 Intent i = new Intent(getApplicationContext(), TopPlayersActivity.class);
                 startActivity(i);
@@ -85,7 +89,9 @@ public class WinActivity extends AppCompatActivity {
     private void addScore() {
         //getting the values to save
         String nickname = editTextName.getText().toString().trim();
+        Log.d("Nome: ", nickname);
         int score = punteggio;
+        Log.d("Punti: ", Integer.toString(score));
 
         //checking if the value is provided
         if (!TextUtils.isEmpty(nickname)) {
@@ -109,5 +115,12 @@ public class WinActivity extends AppCompatActivity {
             //if the value is not given displaying a toast
             Toast.makeText(this, "Please enter a name", Toast.LENGTH_LONG).show();
         }
+    }
+
+    private boolean isEmpty(EditText etText) {
+        if (etText.getText().toString().trim().length() > 0)
+            return false;
+
+        return true;
     }
 }

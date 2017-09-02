@@ -1,12 +1,5 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
-/*
- *  Modifiche del 29/08:
- *
- *      - pulsanti TRY AGAIN e BACK MENU
- *
- */
-
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
@@ -27,9 +20,6 @@ public class LoseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lose);
-
-        // Orientamento landscape
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         tryAgainBtn = (ImageButton)findViewById(R.id.try_again_btn);
         backToMenuBtn = (ImageButton)findViewById(R.id.back_to_menu_btn);

@@ -21,14 +21,10 @@ public class GameTutorialActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_tutorial);
 
-        GifImageView gifImageView = (GifImageView) findViewById(R.id.GifImageView);
+        GifImageView gifImageView = (GifImageView)findViewById(R.id.GifImageView);
         gifImageView.setGifImageResource(R.drawable.tutorial_p1);
         gifImageView.setScaleX(1.2f);
         gifImageView.setScaleY(1.2f);
-
-
-        // Orientamento landscape
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         backButton = (ImageButton)findViewById(R.id.back_button);
 

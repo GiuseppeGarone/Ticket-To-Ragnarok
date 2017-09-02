@@ -108,7 +108,6 @@
         android:layout_below="@id/domanda"
         android:layout_marginTop="10dp"
         android:background="@color/trasparente"
-        android:scaleType="centerInside"
-        android:src="@drawable/confirm_btn" />
+        android:scaleType="centerInside" />
 
 </RelativeLayout>

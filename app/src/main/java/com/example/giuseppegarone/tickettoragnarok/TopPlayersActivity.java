@@ -1,12 +1,5 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
-/*
- *  Modifiche del 29/08:
- *
- *      - pulsante BACK MENU
- *
- */
-
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
@@ -55,9 +48,6 @@ public class TopPlayersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_players);
-
-        // Orientamento landscape
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         //getting the reference of classifica node
         databaseClassifica = FirebaseDatabase.getInstance().getReference("Classifica");

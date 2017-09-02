@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -27,10 +26,7 @@ import java.util.Random;
 public class Popup extends Activity {
 
     public ImageButton confirmButton;
-    public CheckBox risp1;
-    public CheckBox risp2;
-    public CheckBox risp3;
-    public CheckBox risp4;
+    public CheckBox risp1, risp2, risp3, risp4;
     public String risp1Testo = "";
     public String risp2Testo = "";
     public String risp3Testo = "";
@@ -58,9 +54,6 @@ public class Popup extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.popup_window);
 
-        // Orientamento landscape
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
         //getting the reference of Domande node
         databaseDomande = FirebaseDatabase.getInstance().getReference("Domande");
 
@@ -79,6 +72,7 @@ public class Popup extends Activity {
         risp3 = (CheckBox)findViewById(R.id.risposta3);
         risp4 = (CheckBox)findViewById(R.id.risposta4);
         confirmButton = (ImageButton)findViewById(R.id.confirm_button);
+        confirmButton.setImageResource(R.drawable.confirm_disabled_btn);
         confirmButton.setEnabled(false);
 
         // Avvio timer
@@ -157,6 +151,7 @@ public class Popup extends Activity {
             case R.id.risposta1:
                 if (checked) {
                     rispScelta = risp1Testo;
+                    confirmButton.setImageResource(R.drawable.confirm_btn);
                     confirmButton.setEnabled(true);
                     risp2.setChecked(false);
                     risp3.setChecked(false);
@@ -169,6 +164,7 @@ public class Popup extends Activity {
             case R.id.risposta2:
                 if (checked) {
                     rispScelta = risp2Testo;
+                    confirmButton.setImageResource(R.drawable.confirm_btn);
                     confirmButton.setEnabled(true);
                     risp1.setChecked(false);
                     risp3.setChecked(false);
@@ -181,6 +177,7 @@ public class Popup extends Activity {
             case R.id.risposta3:
                 if (checked) {
                     rispScelta = risp3Testo;
+                    confirmButton.setImageResource(R.drawable.confirm_btn);
                     confirmButton.setEnabled(true);
                     risp1.setChecked(false);
                     risp2.setChecked(false);
@@ -193,6 +190,7 @@ public class Popup extends Activity {
             case R.id.risposta4:
                 if (checked) {
                     rispScelta = risp4Testo;
+                    confirmButton.setImageResource(R.drawable.confirm_btn);
                     confirmButton.setEnabled(true);
                     risp1.setChecked(false);
                     risp2.setChecked(false);
@@ -208,10 +206,12 @@ public class Popup extends Activity {
     public void start() {
 
         countDownTimer = new CountDownTimer(timerDurationSecs*1000, 1000) {
+
             @Override
             public void onTick(long millisUntilFinisched) {
                 residualTime = (int)millisUntilFinisched/1000;
                 time.setText("" + residualTime);
+
                 if(millisUntilFinisched/1000 < 10) {
                     time.setTextColor(Color.RED);
                 }
@@ -221,6 +221,7 @@ public class Popup extends Activity {
             @Override
             public void onFinish() {
                 cancel();
+
                 Intent i = new Intent(getApplicationContext(), LoseActivity.class);
                 startActivity(i);
             }
@@ -249,18 +250,19 @@ public class Popup extends Activity {
     // Calcolo punteggio
     public int scoreBonus (int n) {
         if(n > 17) {
-            finalScore = n + (int)(n * bonus4 * bonus3 * bonus2 * bonus1);
+            finalScore = n + (int) (n * bonus4 * bonus3 * bonus2 * bonus1);
         } else {
             if(n > 14 && n < 17) {
                 finalScore = n + (int) (n * bonus3 * bonus2 * bonus1);
             } else {
                 if(n > 10 && n < 14) {
-                    finalScore = n + (int)(n * bonus2 * bonus1);
+                    finalScore = n + (int) (n * bonus2 * bonus1);
                 } else {
                     finalScore = n + (int) (n * bonus1);
                 }
             }
         }
+
         return finalScore;
     }
 }

@@ -24,9 +24,6 @@ public class GameMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_menu);
 
-        // Orientamento landscape
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
         String sender = getIntent().getExtras().getString("sender");
         if(sender != null && sender.equals("splashScreen")){
             //host_url = getIntent().getExtras().getString("hostUrl");

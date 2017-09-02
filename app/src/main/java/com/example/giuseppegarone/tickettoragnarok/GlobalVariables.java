@@ -1,10 +1,7 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
-/**
- * Created by melissacoarezza on 31/08/17.
- */
-
 public class GlobalVariables {
+
     private static String parsedServerURL = null;
 
     public static int RAW_PORT = 8080;

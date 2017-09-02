@@ -58,9 +58,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        // Orientamento landscape
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
         // Titolo
         customFont = Typeface.createFromAsset(getAssets(), "gameplay.ttf");
         mainTitle = (TextView)findViewById(R.id.main_title);
@@ -83,7 +80,7 @@ public class MainActivity extends Activity {
                 //if (checkCorrectIp()) {
                 if(checkCorrectIp()){
                     startButton.setImageResource(R.drawable.start_btn);
-                    createAndCheckIp(); //PORKAROUND
+                    createAndCheckIp();
                     startButton.setEnabled(true);
 
 
@@ -121,7 +118,7 @@ public class MainActivity extends Activity {
 
     /**
      * Create and store in global variables the server address list
-     * @return true if success, false otherwhile
+     * @return true if success, false otherwise
      */
     private boolean createAndCheckIp(){
         StringBuilder sb = new StringBuilder();

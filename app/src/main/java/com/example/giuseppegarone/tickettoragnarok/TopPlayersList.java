@@ -18,8 +18,6 @@ public class TopPlayersList extends ArrayAdapter<Score> {
 
     private Activity context;
 
-//    public Typeface customFont;
-
     List<Score> scores;
 
     public TopPlayersList(Activity context, List<Score> scores) {
@@ -35,13 +33,6 @@ public class TopPlayersList extends ArrayAdapter<Score> {
 
         TextView textViewNickname = (TextView) listViewItem.findViewById(R.id.textViewNickname);
         TextView textViewScore = (TextView) listViewItem.findViewById(R.id.textViewScore);
-
-        /*
-        AssetManager assetManager = getContext().getAssets();
-        customFont = Typeface.createFromAsset(assetManager, "gameplay.ttf");
-        textViewNickname.setTypeface(customFont);
-        textViewScore.setTypeface(customFont);
-        */
 
         Score punteggio = scores.get(getCount()-1-position);
 

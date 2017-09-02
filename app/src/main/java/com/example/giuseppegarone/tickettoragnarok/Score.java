@@ -2,11 +2,6 @@ package com.example.giuseppegarone.tickettoragnarok;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
-/**
- * Created by melissacoarezza on 21/07/17.
- */
-
-
 @IgnoreExtraProperties
 public class Score {
     private String nickname;

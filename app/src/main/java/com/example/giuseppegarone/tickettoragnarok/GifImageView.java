@@ -1,9 +1,5 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
-/**
- * Created by melissacoarezza on 31/08/17.
- */
-
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Movie;
