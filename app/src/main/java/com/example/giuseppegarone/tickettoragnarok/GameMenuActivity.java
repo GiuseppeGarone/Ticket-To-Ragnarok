@@ -26,8 +26,6 @@ public class GameMenuActivity extends AppCompatActivity {
 
         String sender = getIntent().getExtras().getString("sender");
         if(sender != null && sender.equals("splashScreen")){
-            //host_url = getIntent().getExtras().getString("hostUrl");
-            //host_port = getIntent().getExtras().getInt("hostPort");
             GlobalVariables.RAW_IP = getIntent().getExtras().getString("hostUrl");
             GlobalVariables.RAW_PORT = getIntent().getExtras().getInt("hostPort");
         }

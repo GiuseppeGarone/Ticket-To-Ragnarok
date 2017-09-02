@@ -69,24 +69,24 @@ public class AccensioneRagnatela {
     SegmentoRagnatelaFisica segmento16 = new SegmentoRagnatelaFisica();
     boolean bho16 = segmento16.setPartenzaArrivo(333, 343);
     SegmentoRagnatelaFisica segmento17 = new SegmentoRagnatelaFisica();
-    boolean bho17 = segmento17.setPartenzaArrivo(348, 357);
+    boolean bho17 = segmento17.setPartenzaArrivo(436, 444);
     SegmentoRagnatelaFisica segmento18 = new SegmentoRagnatelaFisica();
-    boolean bho18 = segmento18.setPartenzaArrivo(436, 444);
+    boolean bho18 = segmento18.setPartenzaArrivo(7, 13);
     SegmentoRagnatelaFisica segmento19 = new SegmentoRagnatelaFisica();
-    boolean bho19 = segmento19.setPartenzaArrivo(449, 460);
+    boolean bho19 = segmento19.setPartenzaArrivo(68, 84);
     SegmentoRagnatelaFisica segmento20 = new SegmentoRagnatelaFisica();
-    boolean bho20 = segmento20.setPartenzaArrivo(7, 13);
-
+    boolean bho20 = segmento20.setPartenzaArrivo(204, 216);
     SegmentoRagnatelaFisica segmento21 = new SegmentoRagnatelaFisica();
-    boolean bho21 = segmento21.setPartenzaArrivo(17, 21);
+    boolean bho21 = segmento21.setPartenzaArrivo(348, 357);
     SegmentoRagnatelaFisica segmento22 = new SegmentoRagnatelaFisica();
-    boolean bho22 = segmento22.setPartenzaArrivo(68, 84);
+    boolean bho22 = segmento22.setPartenzaArrivo(449, 460);
     SegmentoRagnatelaFisica segmento23 = new SegmentoRagnatelaFisica();
-    boolean bho23 = segmento23.setPartenzaArrivo(89, 106);
+    boolean bho23 = segmento23.setPartenzaArrivo(17, 21);
     SegmentoRagnatelaFisica segmento24 = new SegmentoRagnatelaFisica();
-    boolean bho24 = segmento24.setPartenzaArrivo(204, 216);
+    boolean bho24 = segmento24.setPartenzaArrivo(89, 106);
     SegmentoRagnatelaFisica segmento25 = new SegmentoRagnatelaFisica();
     boolean bho25 = segmento25.setPartenzaArrivo(221, 231);
+
 
     Map<Integer, Integer> map_corrispondenze = new HashMap<Integer, Integer>();
     HashMap<Integer, Integer> map_lati = new HashMap<Integer, Integer>(); //considerare la possibilità che si cerchi zero

@@ -69,6 +69,7 @@ public class GamePlayingActivity extends AppCompatActivity {
 
 
                 if(v.i < 10){
+
                     a.accendere(v.i+15, GamePlayingActivity.this);
                     v.i = v.i + 5;
                 } else {
