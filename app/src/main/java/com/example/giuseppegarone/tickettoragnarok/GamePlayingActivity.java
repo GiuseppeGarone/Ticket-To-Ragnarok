@@ -58,9 +58,17 @@ public class GamePlayingActivity extends AppCompatActivity {
         v.draw(c);
         stradePassate.add(v.posAttuale);
 
-        //da riempire
-        //int daPartenza,int aPartenza,int daArrivo,int aArrivo=0;
-        //a.accendiPartenzaArrivo(daPartenza,aPartenza,daArrivo,aArrivo);
+        // PARTE NUOVA DI MAGLIONS
+        int daPartenza, aPartenza, daArrivo, aArrivo=0;
+        daPartenza=a.possibiliGiunti.get(v.i).partenza;
+        aPartenza=a.possibiliGiunti.get(v.i).arrivo;
+
+        daArrivo=a.possibiliGiunti.get(v.h).partenza;
+        aArrivo=a.possibiliGiunti.get(v.h).arrivo;
+
+        a.accendiPartenzaArrivo(daPartenza,aPartenza,daArrivo,aArrivo);
+        // ----------------------
+
 
         movimentoInterno = (ImageButton)findViewById(R.id.movimento2_btn);
         movimentoInterno.setOnClickListener(new View.OnClickListener() {
@@ -164,7 +172,7 @@ public class GamePlayingActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        // Disabilito tasto BACK di sistema
+        // Disable BACK button
     }
 
     @Override

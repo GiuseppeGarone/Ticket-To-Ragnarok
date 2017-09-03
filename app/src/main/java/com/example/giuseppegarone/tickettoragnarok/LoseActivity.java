@@ -1,7 +1,6 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,8 +10,7 @@ import android.widget.TextView;
 
 public class LoseActivity extends AppCompatActivity {
 
-    public ImageButton tryAgainBtn;
-    public ImageButton backToMenuBtn;
+    public ImageButton tryAgainBtn, backToMenuBtn;
     public TextView titoloPerdita;
     public Typeface customFont;
 
@@ -28,7 +26,7 @@ public class LoseActivity extends AppCompatActivity {
         customFont = Typeface.createFromAsset(getAssets(), "gameplay.ttf");
         titoloPerdita.setTypeface(customFont);
 
-        // Listener pulsanti
+        // Listener TRY AGAIN button
         tryAgainBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,6 +35,7 @@ public class LoseActivity extends AppCompatActivity {
             }
         });
 
+        // Listener MAIN MENU button
         backToMenuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,4 +45,5 @@ public class LoseActivity extends AppCompatActivity {
             }
         });
     }
+
 }

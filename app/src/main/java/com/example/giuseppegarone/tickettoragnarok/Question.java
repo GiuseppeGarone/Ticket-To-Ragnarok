@@ -6,10 +6,7 @@ import com.google.firebase.database.IgnoreExtraProperties;
 public class Question {
 
     private String Dtext;
-    private String R1;
-    private String R2;
-    private String R3;
-    private String R4;
+    private String R1, R2, R3, R4;
     private String Rgiusta;
 
     public Question() {
@@ -48,4 +45,5 @@ public class Question {
     public String getRgiusta() {
         return Rgiusta;
     }
+
 }

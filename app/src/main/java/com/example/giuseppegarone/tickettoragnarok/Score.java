@@ -4,6 +4,7 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
 @IgnoreExtraProperties
 public class Score {
+
     private String nickname;
     private int score;
 
@@ -23,4 +24,5 @@ public class Score {
     public int getScore() {
         return score;
     }
+
 }

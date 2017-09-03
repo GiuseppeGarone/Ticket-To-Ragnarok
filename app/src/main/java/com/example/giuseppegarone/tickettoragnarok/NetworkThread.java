@@ -17,6 +17,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class NetworkThread extends HandlerThread {
+
     public static final String TAG = "networkThread";
 
     public final static int SET_PIXELS = 1;
@@ -29,7 +30,8 @@ public class NetworkThread extends HandlerThread {
     private Handler mMainThreadHandler;
     private OkHttpClient okHttpClient = new OkHttpClient();
 
-    private String host_url = "192.168.1.3";    // IP da cambiare in base a chi testa!
+    // IP da cambiare in base a chi testa!
+    private String host_url = "192.168.1.4";
     private int host_port = 8080;
 
     public NetworkThread(Handler mainThreadHandler) {

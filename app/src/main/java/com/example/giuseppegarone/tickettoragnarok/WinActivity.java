@@ -27,7 +27,7 @@ public class WinActivity extends AppCompatActivity {
     public int punteggio;
     public String nomeInserito = "";    // Stringa di prova, ma inutile...
 
-    //our database reference object
+    // Database reference object
     DatabaseReference databaseClassifica;
 
     @Override
@@ -35,7 +35,7 @@ public class WinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_win);
 
-        //getting the reference of classifica node
+        // Getting the reference of classifica node
         databaseClassifica = FirebaseDatabase.getInstance().getReference("Classifica");
 
         punti = (TextView)findViewById(R.id.punteggio);
@@ -49,7 +49,7 @@ public class WinActivity extends AppCompatActivity {
         customFont = Typeface.createFromAsset(getAssets(), "gameplay.ttf");
         titoloVittoria.setTypeface(customFont);
 
-        // Prelevo punteggio dall'intent
+        // Getting score from intent
         Bundle extra = getIntent().getExtras();
         punteggio = extra.getInt("punti");
         punti.setText(String.valueOf(punteggio));
@@ -64,18 +64,17 @@ public class WinActivity extends AppCompatActivity {
         }
         */
 
+        // Prova mia...
         nomeInserito = editTextName.getText().toString();
         Log.d("Nome inserito 2: ", nomeInserito);
 
-        //adding an onclicklistener to button
+        // Listener SAVE SCORE button
         buttonAddScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //calling the method addScore()
-                //the method is defined below
-                //this method is actually performing the write operation
-
+                // addScore() method is actually performing the write operation
                 addScore();
+
                 Intent i = new Intent(getApplicationContext(), TopPlayersActivity.class);
                 startActivity(i);
             }
@@ -87,40 +86,47 @@ public class WinActivity extends AppCompatActivity {
     * Firebase Realtime Database
     * */
     private void addScore() {
-        //getting the values to save
+
+        // Getting the values to save
         String nickname = editTextName.getText().toString().trim();
         Log.d("Nome: ", nickname);
         int score = punteggio;
         Log.d("Punti: ", Integer.toString(score));
 
-        //checking if the value is provided
+        // Checking if the value is provided
         if (!TextUtils.isEmpty(nickname)) {
 
-            //getting a unique id using push().getKey() method
-            //it will create a unique id and we will use it as the Primary Key for our Score
+            // push().getKey() method will create a unique id (which is the Primary Key)
             String id = databaseClassifica.push().getKey();
 
-            //creating a Score Object
+            // Creating a Score Object
             Score punteggiodatabase = new Score(nickname, score);
 
-            //Saving the Score
+            // Saving the Score
             databaseClassifica.child(id).setValue(punteggiodatabase);
 
-            //setting edittext to blank again
+            // Setting edittext to blank again
             editTextName.setText("");
 
-            //displaying a success toast
+            // Displaying a success toast
             Toast.makeText(this, "New Score added", Toast.LENGTH_LONG).show();
         } else {
-            //if the value is not given displaying a toast
+            // If the value is not given displaying a toast
             Toast.makeText(this, "Please enter a name", Toast.LENGTH_LONG).show();
         }
     }
 
+    /**
+     * Metodo per vedere se una EditText è vuota.
+     *
+     * @param etText è la EditText che vogliamo analizzare
+     * @return false se è piena, true se è vuota
+     */
     private boolean isEmpty(EditText etText) {
         if (etText.getText().toString().trim().length() > 0)
             return false;
 
         return true;
     }
+
 }

@@ -1,6 +1,7 @@
 package com.example.giuseppegarone.tickettoragnarok;
 
-public class SegmentoRagnatelaFisica {
+
+public class GiuntoRagnatelaFisica {
 
     public int partenza;
     public int arrivo;
@@ -13,3 +14,4 @@ public class SegmentoRagnatelaFisica {
     }
 
 }
+

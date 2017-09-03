@@ -36,4 +36,5 @@ public class Linea {
     public Point getPartenza() {
         return partenza;
     }
+
 }

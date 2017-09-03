@@ -16,8 +16,4 @@ public class GlobalVariables {
         parsedServerURL = url;
     }
 
-
-
-
-
 }

@@ -15,11 +15,12 @@ import java.io.InputStream;
 
 public class GifImageView extends View {
 
+    private Context mContext;
     private InputStream mInputStream;
     private Movie mMovie;
+
     private int mWidth, mHeight;
     private long mStart;
-    private Context mContext;
 
     public GifImageView(Context context) {
         super(context);
@@ -33,12 +34,12 @@ public class GifImageView extends View {
     public GifImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.mContext = context;
+
         if (attrs.getAttributeName(1).equals("background")) {
             int id = Integer.parseInt(attrs.getAttributeValue(1).substring(1));
             setGifImageResource(id);
         }
     }
-
 
     private void init() {
         setFocusable(true);
@@ -64,8 +65,8 @@ public class GifImageView extends View {
         }
 
         if (mMovie != null) {
-
             int duration = mMovie.duration();
+
             if (duration == 0) {
                 duration = 1000;
             }
@@ -92,4 +93,5 @@ public class GifImageView extends View {
             Log.e("GIfImageView", "File not found");
         }
     }
+
 }

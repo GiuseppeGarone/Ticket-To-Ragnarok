@@ -32,16 +32,15 @@ public class TopPlayersActivity extends AppCompatActivity {
     public static final String SCORE_NICKNAME = "net.simplifiedcoding.firebasedatabaseexample.artistname";
     public static final String SCORE_ID = "net.simplifiedcoding.firebasedatabaseexample.artistid";*/
 
-    //view objects
     ImageButton buttonBackHome;
     ListView listViewScores;
     TextView header;
     Typeface customFont;
 
-    //a list to store all the scores from firebase database
+    // List to store all the scores from firebase database
     List<Score> scores;
 
-    //our database reference object
+    // Database reference object
     DatabaseReference databaseClassifica;
 
     @Override
@@ -49,22 +48,19 @@ public class TopPlayersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_players);
 
-        //getting the reference of classifica node
+        // Getting the reference of classifica node
         databaseClassifica = FirebaseDatabase.getInstance().getReference("Classifica");
 
-        //getting views
         listViewScores = (ListView) findViewById(R.id.listViewScores);
+        buttonBackHome = (ImageButton) findViewById(R.id.buttonBackHome);
         header = (TextView) findViewById(R.id.textView);
-
         customFont = Typeface.createFromAsset(getAssets(), "gameplay.ttf");
         header.setTypeface(customFont);
 
-        buttonBackHome = (ImageButton) findViewById(R.id.buttonBackHome);
-
-        //list to store scores
+        // List to store scores
         scores = new ArrayList<>();
 
-        //adding an onclicklistener to button
+        // Listener BACK MENU button
         buttonBackHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,20 +79,20 @@ public class TopPlayersActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                //clearing the previous score list
+                // Clearing the previous score list
                 scores.clear();
 
-                //iterating through all the nodes
+                // Iterating through all the nodes
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    //getting score
+                    // Getting score
                     Score punteggio = child.getValue(Score.class);
-                    //adding score to the list
+
+                    // Adding score to the list
                     scores.add(punteggio);
                 }
 
-                //creating adapter
+                // Creating adapter, than attaching it to the listview
                 TopPlayersList scoreAdapter = new TopPlayersList(TopPlayersActivity.this, scores);
-                //attaching adapter to the listview
                 listViewScores.setAdapter(scoreAdapter);
 
             }
@@ -107,4 +103,5 @@ public class TopPlayersActivity extends AppCompatActivity {
             }
         });
     }
+
 }

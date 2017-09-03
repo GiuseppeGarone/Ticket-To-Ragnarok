@@ -2,14 +2,12 @@ package com.example.giuseppegarone.tickettoragnarok;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -27,6 +25,7 @@ public class Popup extends Activity {
 
     public ImageButton confirmButton;
     public CheckBox risp1, risp2, risp3, risp4;
+    public CountDownTimer countDownTimer;
     public String risp1Testo = "";
     public String risp2Testo = "";
     public String risp3Testo = "";
@@ -34,8 +33,6 @@ public class Popup extends Activity {
     public String rispScelta = "";
     public String rispGiusta = "";
     public TextView testoDomanda;
-
-    public CountDownTimer countDownTimer;
     public TextView time;
 
     public double bonus1 = 1.5;
@@ -46,7 +43,7 @@ public class Popup extends Activity {
     public int residualTime;
     public int timerDurationSecs = 21;
 
-    //our database reference object
+    // Database reference object
     DatabaseReference databaseDomande;
 
     @Override
@@ -54,28 +51,27 @@ public class Popup extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.popup_window);
 
-        //getting the reference of Domande node
+        // Getting the reference of Domande node
         databaseDomande = FirebaseDatabase.getInstance().getReference("Domande");
 
-        // Setto dimensioni popup
+        // Setting popup size
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int width = dm.widthPixels;
         int height = dm.heightPixels;
         getWindow().setLayout((int)(width*.8),(int)(height*.85));
 
-        // Prelevo riferimenti
-        time = (TextView)findViewById(R.id.time_value);
-        testoDomanda = (TextView)findViewById(R.id.testo_domanda);
-        risp1 = (CheckBox)findViewById(R.id.risposta1);
-        risp2 = (CheckBox)findViewById(R.id.risposta2);
-        risp3 = (CheckBox)findViewById(R.id.risposta3);
-        risp4 = (CheckBox)findViewById(R.id.risposta4);
-        confirmButton = (ImageButton)findViewById(R.id.confirm_button);
+        time = (TextView) findViewById(R.id.time_value);
+        testoDomanda = (TextView) findViewById(R.id.testo_domanda);
+        risp1 = (CheckBox) findViewById(R.id.risposta1);
+        risp2 = (CheckBox) findViewById(R.id.risposta2);
+        risp3 = (CheckBox) findViewById(R.id.risposta3);
+        risp4 = (CheckBox) findViewById(R.id.risposta4);
+        confirmButton = (ImageButton) findViewById(R.id.confirm_button);
         confirmButton.setImageResource(R.drawable.confirm_disabled_btn);
         confirmButton.setEnabled(false);
 
-        // Avvio timer
+        // Starting timer
         start();
 
         databaseDomande.addValueEventListener(new ValueEventListener() {
@@ -96,7 +92,7 @@ public class Popup extends Activity {
 
                 Question Dscelta = objects.get(i);
 
-                // Memorizzo le risposte
+                // Saving question and answer values
                 testoDomanda.setText(Dscelta.getDtext());
                 risp1.setText(Dscelta.getR1());
                 risp2.setText(Dscelta.getR2());
@@ -115,19 +111,24 @@ public class Popup extends Activity {
             }
         });
 
-        // Listener pulsante CONFERMA RISPOSTA
+        // Listener CONFIRM button
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(checkAnswer(rispScelta, rispGiusta)) {
+
+                    // Calculate final score
                     scoreBonus(residualTime);
 
+                    // Stopping timer
                     cancel();
 
                     Intent i = new Intent(getApplicationContext(), WinActivity.class);
                     i.putExtra("punti", finalScore);
                     startActivity(i);
                 } else {
+
+                    // Stopping timer
                     cancel();
 
                     Intent i = new Intent(getApplicationContext(), LoseActivity.class);
@@ -139,15 +140,20 @@ public class Popup extends Activity {
 
     @Override
     public void onBackPressed() {
-        // Disabilito tasto BACK di sistema
+        // Disable BACK button
     }
 
-    // Controllo quale checkbox è stata selezionata
+    /**
+     * Check which checkbox is checked
+     *
+     * @param view is a checkbox
+     */
     public void onCheckboxClicked(View view) {
 
         boolean checked = ((CheckBox) view).isChecked();
 
         switch(view.getId()) {
+
             case R.id.risposta1:
                 if (checked) {
                     rispScelta = risp1Testo;
@@ -202,11 +208,14 @@ public class Popup extends Activity {
         }
     }
 
-    // Partenza timer
+    /**
+     * Start the timer
+     */
     public void start() {
 
         countDownTimer = new CountDownTimer(timerDurationSecs*1000, 1000) {
 
+            // onTick method manage the flow of the timer.
             @Override
             public void onTick(long millisUntilFinisched) {
                 residualTime = (int)millisUntilFinisched/1000;
@@ -217,7 +226,7 @@ public class Popup extends Activity {
                 }
             }
 
-            // Fine timer
+            // End of the timer
             @Override
             public void onFinish() {
                 cancel();
@@ -230,7 +239,7 @@ public class Popup extends Activity {
         countDownTimer.start();
     }
 
-    // Interruzione timer
+    // Interrupt the timer
     public void cancel() {
         if(countDownTimer != null) {
             countDownTimer.cancel();
@@ -238,7 +247,13 @@ public class Popup extends Activity {
         }
     }
 
-    // Confronto risposta scelta e risposta giusta
+    /**
+     * Compare two strings. Used to compare the choosed answer to the right answer.
+     *
+     * @param a first string
+     * @param b second string
+     * @return true if the strings have the same value, false otherwise
+     */
     public boolean checkAnswer(String a, String b) {
         if(a.equals(b)) {
             return true;
@@ -247,7 +262,12 @@ public class Popup extends Activity {
         }
     }
 
-    // Calcolo punteggio
+    /**
+     * This method calculate the final score.
+     *
+     * @param n is the residualTime
+     * @return the final score
+     */
     public int scoreBonus (int n) {
         if(n > 17) {
             finalScore = n + (int) (n * bonus4 * bonus3 * bonus2 * bonus1);
@@ -265,4 +285,5 @@ public class Popup extends Activity {
 
         return finalScore;
     }
+
 }

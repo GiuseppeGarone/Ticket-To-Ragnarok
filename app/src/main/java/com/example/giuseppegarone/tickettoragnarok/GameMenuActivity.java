@@ -30,19 +30,14 @@ public class GameMenuActivity extends AppCompatActivity {
             GlobalVariables.RAW_PORT = getIntent().getExtras().getInt("hostPort");
         }
 
-
-
-        // Crediti
         creditsView = (TextView)findViewById(R.id.credits);
         customFont = Typeface.createFromAsset(getAssets(), "gameplay.ttf");
         creditsView.setTypeface(customFont);
-
-        // Pulsanti
         playButton = (ImageButton)findViewById(R.id.play_game_button);
         tutorialButton = (ImageButton)findViewById(R.id.tutorial_button);
         topPlayersButton = (ImageButton)findViewById(R.id.top_players_button);
 
-        // Listener pulsante PLAY
+        // Listener PLAY button
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,7 +52,7 @@ public class GameMenuActivity extends AppCompatActivity {
             }
         });
 
-        // Listener pulsante TUTORIAL
+        // Listener TUTORIAL button
         tutorialButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +61,7 @@ public class GameMenuActivity extends AppCompatActivity {
             }
         });
 
-        // Listener pulsante TOP PLAYERS
+        // Listener TOP PLAYERS button
         topPlayersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

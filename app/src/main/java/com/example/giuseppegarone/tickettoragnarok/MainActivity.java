@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
     public TextView mainTitle;
     public Typeface customFont;
 
-    // Pulsante START
+    // START button
     @BindView(R.id.start_button)
     ImageButton startButton;
 
@@ -58,7 +58,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        // Titolo
         customFont = Typeface.createFromAsset(getAssets(), "gameplay.ttf");
         mainTitle = (TextView)findViewById(R.id.main_title);
         mainTitle.setTypeface(customFont);
@@ -117,7 +116,8 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * Create and store in global variables the server address list
+     * Create and store in global variables the server address list.
+     *
      * @return true if success, false otherwise
      */
     private boolean createAndCheckIp(){
@@ -228,7 +228,7 @@ public class MainActivity extends Activity {
         unbinder.unbind();
     }
 
-    // Listener pulsante START
+    // Listener START button
     @OnClick(R.id.start_button)
     void startApp(){
 

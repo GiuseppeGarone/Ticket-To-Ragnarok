@@ -30,4 +30,5 @@ public class Giunto {
     public Paint getPaintGiunto() {
         return paint;
     }
+
 }
