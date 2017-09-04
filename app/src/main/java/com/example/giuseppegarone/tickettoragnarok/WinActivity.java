@@ -25,7 +25,6 @@ public class WinActivity extends AppCompatActivity {
     Typeface customFont;
 
     public int punteggio;
-    public String nomeInserito = "";    // Stringa di prova, ma inutile...
 
     // Database reference object
     DatabaseReference databaseClassifica;
@@ -44,7 +43,6 @@ public class WinActivity extends AppCompatActivity {
         buttonAddScore = (ImageButton) findViewById(R.id.buttonAddScore);
 
         buttonAddScore.setImageResource(R.drawable.savescore_btn);
-        //buttonAddScore.setEnabled(false);
 
         customFont = Typeface.createFromAsset(getAssets(), "gameplay.ttf");
         titoloVittoria.setTypeface(customFont);
@@ -53,20 +51,6 @@ public class WinActivity extends AppCompatActivity {
         Bundle extra = getIntent().getExtras();
         punteggio = extra.getInt("punti");
         punti.setText(String.valueOf(punteggio));
-
-        nomeInserito = editTextName.getText().toString();
-        Log.d("Nome inserito: ", nomeInserito);
-
-        /*
-        if(editTextName.getText().toString().trim().length() == 0) {
-            buttonAddScore.setImageResource(R.drawable.savescore_btn);
-            buttonAddScore.setEnabled(true);
-        }
-        */
-
-        // Prova mia...
-        nomeInserito = editTextName.getText().toString();
-        Log.d("Nome inserito 2: ", nomeInserito);
 
         // Listener SAVE SCORE button
         buttonAddScore.setOnClickListener(new View.OnClickListener() {
@@ -114,19 +98,6 @@ public class WinActivity extends AppCompatActivity {
             // If the value is not given displaying a toast
             Toast.makeText(this, "Please enter a name", Toast.LENGTH_LONG).show();
         }
-    }
-
-    /**
-     * Metodo per vedere se una EditText è vuota.
-     *
-     * @param etText è la EditText che vogliamo analizzare
-     * @return false se è piena, true se è vuota
-     */
-    private boolean isEmpty(EditText etText) {
-        if (etText.getText().toString().trim().length() > 0)
-            return false;
-
-        return true;
     }
 
 }
