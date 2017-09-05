@@ -31,7 +31,7 @@ public class NetworkThread extends HandlerThread {
     private OkHttpClient okHttpClient = new OkHttpClient();
 
     // IP da cambiare in base a chi testa!
-    private String host_url = "192.168.1.4";
+    private String host_url = "192.168.1.5";
     private int host_port = 8080;
 
     public NetworkThread(Handler mainThreadHandler) {

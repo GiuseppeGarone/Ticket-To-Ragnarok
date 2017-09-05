@@ -11,7 +11,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.widget.Toast;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,18 +25,18 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class AccensioneRagnatela {
-    public static final String TAG = "accensioneRagnatela";
+    private int daPartenza;
+    private int aPartenza;
     //private String host_url = "192.168.1.32";
     //private int host_port = 8080;
     private ArrayList<SegmentoRagnatelaFisica> segmenti = new ArrayList<>();
     public List<GiuntoRagnatelaFisica> possibiliGiunti = new ArrayList<GiuntoRagnatelaFisica>();
 
-    private JSONArray pixels_array;
+
 
     List<SegmentoRagnatelaFisica> possibiliSegmenti = new ArrayList<SegmentoRagnatelaFisica>();
-    //public int k;
-    private NetworkThread mNetworkThread = null;
-    private Handler mNetworkHandler, mMainHandler;
+
+    private Handler mNetworkHandler;
 
 
     GiuntoRagnatelaFisica giunto1 = new GiuntoRagnatelaFisica();
@@ -142,7 +142,7 @@ public class AccensioneRagnatela {
     boolean bho21 = segmento21.setPartenzaArrivo(333, 343);
 
     SegmentoRagnatelaFisica segmento22 = new SegmentoRagnatelaFisica();
-    boolean bho22 = segmento22.setPartenzaArrivo(456, 444);
+    boolean bho22 = segmento22.setPartenzaArrivo(436, 444);
 
     SegmentoRagnatelaFisica segmento23 = new SegmentoRagnatelaFisica();
     boolean bho23 = segmento23.setPartenzaArrivo(7, 13);
@@ -164,12 +164,12 @@ public class AccensioneRagnatela {
 
     public AccensioneRagnatela() {
         mapAccesi = new TreeMap<>();
+
         map_giunti.put(329, 332);
         map_giunti.put(433, 435);
         map_giunti.put(4, 6);
         map_giunti.put(64, 67);
         map_giunti.put(200, 203);
-
 
         map_giunti.put(344, 347);
         map_giunti.put(445, 448);
@@ -183,6 +183,7 @@ public class AccensioneRagnatela {
         map_giunti.put(22, 29);
         map_giunti.put(107, 110);
         map_giunti.put(232, 235);
+
 
 
         map_lati.put(524, 541);
@@ -344,16 +345,17 @@ public class AccensioneRagnatela {
 
         mapAccesi.put(da, a);
 
-        Log.d("led", "getmappa" + Integer.toString(mapAccesi.get(da)));
+        //Log.d("led", "getmappa" + Integer.toString(mapAccesi.get(da)));
         if (daCorrispondenza != 0 && aCorrispondenza != 0) {
             mapAccesi.put(daCorrispondenza, aCorrispondenza);
         }
 
-        Log.d("led", Integer.toString(da));
-        Log.d("led", Integer.toString(a));
-        Log.d("led", Integer.toString(daCorrispondenza));
-        Log.d("led", Integer.toString(aCorrispondenza));
 
+        /*Log.d("led",String.valueOf(da));
+        Log.d("led",String.valueOf(a));
+        Log.d("led",String.valueOf(daCorrispondenza));
+        Log.d("led",String.valueOf(aCorrispondenza));
+*/
 
         try {
             JSONArray pixels_array = new JSONArray();
@@ -374,13 +376,31 @@ public class AccensioneRagnatela {
                         tmp.put("b", 0);
                         pixels_array.put(tmp);
                     }
-                    for (int j = next; j < mapAccesi.get(next); j++) {
-                        tmp = new JSONObject();
-                        tmp.put("r", 255);
-                        tmp.put("g", 0);
-                        tmp.put("b", 0);
-                        pixels_array.put(tmp);
-
+                    for (int j = next; j < mapAccesi.get(next); j++)
+                    {
+                        if(map_giunti.containsKey(next) && next!=daPartenza && next!=aPartenza)
+                        {
+                            tmp = new JSONObject();
+                            tmp.put("r", 255);
+                            tmp.put("g", 0);
+                            tmp.put("b", 0);
+                            pixels_array.put(tmp);
+                        }
+                        else if(map_giunti.containsKey(next) && next==daPartenza || next==aPartenza) {
+                            tmp = new JSONObject();
+                            tmp.put("r", 0);
+                            tmp.put("g", 255);
+                            tmp.put("b", 0);
+                            pixels_array.put(tmp);
+                        }
+                        else if(!map_giunti.containsKey(next))
+                        {
+                            tmp = new JSONObject();
+                            tmp.put("r", 251);
+                            tmp.put("g", 175);
+                            tmp.put("b", 49);
+                            pixels_array.put(tmp);
+                        }
                     }
                     past = mapAccesi.get(next);
                 }
@@ -407,18 +427,14 @@ public class AccensioneRagnatela {
 
     }
 
-    private void handleNetworkRequest(int what, Object payload, int arg1, int arg2) {
-        Message msg = mNetworkHandler.obtainMessage();
-        msg.what = what;
-        msg.obj = payload;
-        msg.arg1 = arg1;
-        msg.arg2 = arg2;
-        msg.sendToTarget();
-    }
 
-
-    void accendiPartenzaArrivo(int daPartenza,int aPartenza,int daArrivo,int aArrivo)
+    public void accendiPartenzaArrivo(int daPartenza,int aPartenza,int daArrivo,int aArrivo, final GamePlayingActivity ctx)
     {
+        mNetworkHandler = ctx.getNewtworkHandler();
+
+        this.daPartenza = daPartenza;
+        this.aPartenza = aPartenza;
+
         if (daArrivo > aArrivo) {
             int supp = daArrivo;
             daArrivo = aArrivo;
@@ -431,6 +447,13 @@ public class AccensioneRagnatela {
         }
         mapAccesi.put(daPartenza,aPartenza);
         mapAccesi.put(daArrivo,aArrivo);
+
+        Log.d("giunto partenza da ",String.valueOf(daPartenza));
+        Log.d("giunto partenza a ",String.valueOf(aPartenza));
+        Log.d("giunto arrivo da ",String.valueOf(daArrivo));
+        Log.d("giunto arrivo a",String.valueOf(aArrivo));
+
+
         try {
             JSONArray pixels_array = new JSONArray();
             JSONObject tmp;
@@ -443,19 +466,15 @@ public class AccensioneRagnatela {
                         tmp.put("r", 0);
                         tmp.put("g", 0);
                         tmp.put("b", 0);
-
                     } else if (j > daPartenza && j < aPartenza) {
                         tmp.put("r", 0);
                         tmp.put("g", 255);
                         tmp.put("b", 0);
                     } else if (j > daArrivo && j < aArrivo) {
-                        tmp.put("r", 0);
-                        tmp.put("g", 255);
+                        tmp.put("r", 255);
+                        tmp.put("g", 0);
                         tmp.put("b", 0);
                     }
-
-
-
                     pixels_array.put(tmp);
                 }
 
@@ -467,6 +486,16 @@ public class AccensioneRagnatela {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+    }
+
+    private void handleNetworkRequest(int what, Object payload, int arg1, int arg2) {
+        Message msg = mNetworkHandler.obtainMessage();
+        msg.what = what;
+        msg.obj = payload;
+        msg.arg1 = arg1;
+        msg.arg2 = arg2;
+        msg.sendToTarget();
     }
 
 }

@@ -36,7 +36,8 @@ public class GamePlayingActivity extends AppCompatActivity {
     private Handler mNetworkHandler, mMainHandler;
 
     List<Point> stradePassate = new ArrayList<Point>();
-
+    AccensioneRagnatela a = null;
+    int daPartenza, aPartenza, daArrivo, aArrivo=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +45,10 @@ public class GamePlayingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_playing);
 
 
-        //host_url = getIntent().getExtras().getString("hostUrl");
-        //host_port = getIntent().getExtras().getInt("hostPort");
-
 
         // Aggiungo la ragnatela sopra il layout .xml
         final DrawView v = new DrawView(this);
-        final AccensioneRagnatela a = new AccensioneRagnatela();
+        a = new AccensioneRagnatela();
 
         addContentView(v, new ViewGroup.LayoutParams(600, 600));
         v.setX(425);
@@ -59,14 +57,14 @@ public class GamePlayingActivity extends AppCompatActivity {
         stradePassate.add(v.posAttuale);
 
         // PARTE NUOVA DI MAGLIONS
-        int daPartenza, aPartenza, daArrivo, aArrivo=0;
+
         daPartenza=a.possibiliGiunti.get(v.i).partenza;
         aPartenza=a.possibiliGiunti.get(v.i).arrivo;
 
         daArrivo=a.possibiliGiunti.get(v.h).partenza;
         aArrivo=a.possibiliGiunti.get(v.h).arrivo;
 
-        a.accendiPartenzaArrivo(daPartenza,aPartenza,daArrivo,aArrivo);
+
         // ----------------------
 
 
@@ -179,6 +177,8 @@ public class GamePlayingActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         startHandlerThread();
+        a.accendiPartenzaArrivo(daPartenza,aPartenza,daArrivo,aArrivo,GamePlayingActivity.this);
+
     }
 
     @Override
@@ -199,6 +199,8 @@ public class GamePlayingActivity extends AppCompatActivity {
             }
         }
     }
+
+
 
     public void startHandlerThread() {
         mMainHandler = new Handler() {
