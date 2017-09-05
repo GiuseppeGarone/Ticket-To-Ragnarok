@@ -40,19 +40,19 @@ public class AccensioneRagnatela {
 
 
     GiuntoRagnatelaFisica giunto1 = new GiuntoRagnatelaFisica();
-    boolean mah1 = giunto1.setPartenzaArrivo(329,332 );
+    boolean mah1 = giunto1.setPartenzaArrivo(358,361 );
 
     GiuntoRagnatelaFisica giunto2 = new GiuntoRagnatelaFisica();
-    boolean mah2 = giunto2.setPartenzaArrivo(433,435 );
+    boolean mah2 = giunto2.setPartenzaArrivo(461,464 );
 
     GiuntoRagnatelaFisica giunto3 = new GiuntoRagnatelaFisica();
-    boolean mah3 = giunto3.setPartenzaArrivo(4,6 );
+    boolean mah3 = giunto3.setPartenzaArrivo(22,29 );
 
     GiuntoRagnatelaFisica giunto4 = new GiuntoRagnatelaFisica();
-    boolean mah4 = giunto4.setPartenzaArrivo(64,67 );
+    boolean mah4 = giunto4.setPartenzaArrivo(107,110);
 
     GiuntoRagnatelaFisica giunto5 = new GiuntoRagnatelaFisica();
-    boolean mah5 = giunto5.setPartenzaArrivo(200,203 );
+    boolean mah5 = giunto5.setPartenzaArrivo(232,235 );
 
 
 
@@ -74,19 +74,20 @@ public class AccensioneRagnatela {
 
 
     GiuntoRagnatelaFisica giunto11 = new GiuntoRagnatelaFisica();
-    boolean mah11 = giunto11.setPartenzaArrivo(358,361 );
+    boolean mah11 = giunto11.setPartenzaArrivo(329,332 );
 
     GiuntoRagnatelaFisica giunto12 = new GiuntoRagnatelaFisica();
-    boolean mah12 = giunto12.setPartenzaArrivo(461,464 );
+    boolean mah12 = giunto12.setPartenzaArrivo(433,435 );
 
     GiuntoRagnatelaFisica giunto13 = new GiuntoRagnatelaFisica();
-    boolean mah13 = giunto13.setPartenzaArrivo(22,29 );
+    boolean mah13 = giunto13.setPartenzaArrivo(4,6 );
 
     GiuntoRagnatelaFisica giunto14 = new GiuntoRagnatelaFisica();
-    boolean mah14 = giunto14.setPartenzaArrivo(107,110 );
+    boolean mah14 = giunto14.setPartenzaArrivo(64,67 );
 
     GiuntoRagnatelaFisica giunto15 = new GiuntoRagnatelaFisica();
-    boolean mah15 = giunto15.setPartenzaArrivo(232,235 );
+    boolean mah15 = giunto15.setPartenzaArrivo(200,203 );
+
 
 
     SegmentoRagnatelaFisica segmento1 = new SegmentoRagnatelaFisica();
@@ -431,6 +432,7 @@ public class AccensioneRagnatela {
     public void accendiPartenzaArrivo(int daPartenza,int aPartenza,int daArrivo,int aArrivo, final GamePlayingActivity ctx)
     {
         mNetworkHandler = ctx.getNewtworkHandler();
+        mapAccesi.clear();
 
         this.daPartenza = daPartenza;
         this.aPartenza = aPartenza;
