@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-
 public class TopPlayersList extends ArrayAdapter<Score> {
 
     private Activity context;

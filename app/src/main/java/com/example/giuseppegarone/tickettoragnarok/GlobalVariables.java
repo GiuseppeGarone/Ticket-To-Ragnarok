@@ -8,7 +8,6 @@ public class GlobalVariables {
     public static String RAW_IP = "192.168.1.32";
 
     public static String getParsedServerURL(){
-        //Log.d(TAG, )
         return parsedServerURL;
     }
 

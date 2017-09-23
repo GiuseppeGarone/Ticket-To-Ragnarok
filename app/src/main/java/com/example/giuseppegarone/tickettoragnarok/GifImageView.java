@@ -12,7 +12,6 @@ import android.view.View;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-
 public class GifImageView extends View {
 
     private Context mContext;
@@ -72,9 +71,7 @@ public class GifImageView extends View {
             }
 
             int relTime = (int) ((now - mStart) % duration);
-
             mMovie.setTime(relTime);
-
             mMovie.draw(canvas, 0, 0);
             invalidate();
         }

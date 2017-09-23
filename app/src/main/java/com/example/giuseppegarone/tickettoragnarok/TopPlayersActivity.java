@@ -9,12 +9,9 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -27,10 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TopPlayersActivity extends AppCompatActivity {
-
-    /*we will use these constants later to pass the score nickname and id to another activity
-    public static final String SCORE_NICKNAME = "net.simplifiedcoding.firebasedatabaseexample.artistname";
-    public static final String SCORE_ID = "net.simplifiedcoding.firebasedatabaseexample.artistid";*/
 
     ImageButton buttonBackHome;
     ListView listViewScores;

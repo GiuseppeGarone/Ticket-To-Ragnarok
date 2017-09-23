@@ -6,8 +6,7 @@ import android.graphics.Point;
 public class Linea {
 
     public int partenza1,partenza2,arrivo1,arrivo2;
-    public Point partenza;
-    public Point arrivo;
+    public Point partenza, arrivo;
     public Paint paint;
 
     public Linea() {

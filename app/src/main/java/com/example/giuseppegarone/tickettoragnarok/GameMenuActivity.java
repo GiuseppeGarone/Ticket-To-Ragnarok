@@ -11,13 +11,9 @@ import android.widget.TextView;
 
 public class GameMenuActivity extends AppCompatActivity {
 
-    //private String host_url = "192.168.1.32";
-    //private int host_port = 8080;
-    public ImageButton playButton;          // Pulsante PLAY
-    public ImageButton tutorialButton;      // Pulsante TUTORIAL
-    public ImageButton topPlayersButton;    // Pulsante TOP PLAYERS
-    public TextView creditsView;            // Crediti
-    public Typeface customFont;             // Font
+    public ImageButton playButton, tutorialButton, topPlayersButton;
+    public TextView creditsView;
+    public Typeface customFont;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +38,6 @@ public class GameMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), GamePlayingActivity.class);
-                //i.putExtra("hostUrl", host_url);
-                //i.putExtra("hostPort", host_port);
                 i.putExtra("hostUrl", GlobalVariables.RAW_IP);
                 i.putExtra("hostPort", GlobalVariables.RAW_PORT);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -70,4 +64,5 @@ public class GameMenuActivity extends AppCompatActivity {
             }
         });
     }
+
 }

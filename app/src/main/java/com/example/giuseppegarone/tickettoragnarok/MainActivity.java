@@ -76,13 +76,10 @@ public class MainActivity extends Activity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                //if (checkCorrectIp()) {
                 if(checkCorrectIp()){
                     startButton.setImageResource(R.drawable.start_btn);
                     createAndCheckIp();
                     startButton.setEnabled(true);
-
-
                 }
             }
 
@@ -170,7 +167,7 @@ public class MainActivity extends Activity {
             return false;
     }
 
-    //from http://stackoverflow.com/questions/4581877/validating-ipv4-string-in-java
+    // From http://stackoverflow.com/questions/4581877/validating-ipv4-string-in-java
     public static boolean validIP(String ip) {
         try {
             if (ip == null || ip.isEmpty()) {
@@ -232,12 +229,12 @@ public class MainActivity extends Activity {
     @OnClick(R.id.start_button)
     void startApp(){
 
-
         handleNetworkRequest(NetworkThread.SET_SERVER_DATA, host_url, host_port ,0);
 
         final int DISPLAY_SIZE = 1024;
         final int LED_SIZE = 1072;
-        //spengo tutti i pixel del display
+
+        // Spengo tutti i pixel del display
         try {
             JSONArray pixels_array = new JSONArray();
 
@@ -253,7 +250,7 @@ public class MainActivity extends Activity {
             // There should be no Exception
         }
 
-       //spengo tutti i led
+       // Spengo tutti i led
         try {
             JSONArray pixels_array = new JSONArray();
 
@@ -269,7 +266,6 @@ public class MainActivity extends Activity {
             e.printStackTrace();
         }
 
-
         try {
             Intent i = new Intent(getApplicationContext(), GameMenuActivity.class);
             i.putExtra("sender", "splashscreen");
@@ -281,9 +277,6 @@ public class MainActivity extends Activity {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
-
     }
 
     private void handleNetworkRequest(int what, Object payload, int arg1, int arg2) {
@@ -326,4 +319,5 @@ public class MainActivity extends Activity {
         }
         return pixels_array;
     }
+
 }

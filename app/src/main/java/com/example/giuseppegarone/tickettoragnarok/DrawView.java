@@ -64,7 +64,10 @@ public class DrawView extends View {
         }
     }
 
-    /* Disegno ragnatela completa */
+    /**
+     * Disegno ragnatela completa.
+      * @param canvas
+     */
     @Override
     public void onDraw(Canvas canvas) {
 
@@ -282,7 +285,6 @@ public class DrawView extends View {
         canvas.drawCircle(280,180, 10, paint);
         canvas.drawCircle(250,250, 10, paint);
 
-        //partenzaRandom
         startRandom();
         canvas.drawCircle(giunti.get(i).getCentro().x, giunti.get(i).getCentro().y, 10, paintPart);
         posAttuale = giunti.get(i).getCentro();
@@ -290,7 +292,6 @@ public class DrawView extends View {
         canvas.drawCircle(giunti.get(h).getCentro().x, giunti.get(h).getCentro().y, 10, paintArr);
         posArrivoFin = giunti.get(h).getCentro();
 
-        //controllo per l'arrivo e apertura popup
         if(posArrivoFin==posAttuale) {
             Intent i = new Intent(context, Popup.class);
             context.startActivity(i);

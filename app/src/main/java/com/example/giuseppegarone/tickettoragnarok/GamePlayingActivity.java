@@ -5,7 +5,6 @@ import android.content.Intent;
 import static com.example.giuseppegarone.tickettoragnarok.GlobalVariables.*;
 import android.content.pm.ActivityInfo;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Handler;
 import android.os.Message;
@@ -21,22 +20,18 @@ import java.util.List;
 
 public class GamePlayingActivity extends AppCompatActivity {
 
-
-    //private String host_url = "192.168.1.32";
-    //private int host_port = 8080;
-
     public Canvas c = new Canvas();
     public ImageButton movimentoOrario;
     public ImageButton movimentoAntiOrario;
     public ImageButton movimentoInterno;
     public ImageButton movimentoEsterno;
 
-
     private NetworkThread mNetworkThread = null;
     private Handler mNetworkHandler, mMainHandler;
 
     List<Point> stradePassate = new ArrayList<Point>();
     AccensioneRagnatela a = null;
+
     int daPartenza, aPartenza, daArrivo, aArrivo=0;
 
     @Override
@@ -44,36 +39,23 @@ public class GamePlayingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_playing);
 
-
-
-        // Aggiungo la ragnatela sopra il layout .xml
         final DrawView v = new DrawView(this);
         a = new AccensioneRagnatela();
-
         addContentView(v, new ViewGroup.LayoutParams(600, 600));
         v.setX(425);
         v.setY(70);
         v.draw(c);
         stradePassate.add(v.posAttuale);
 
-        // PARTE NUOVA DI MAGLIONS
-
         daPartenza=a.possibiliGiunti.get(v.i).partenza;
         aPartenza=a.possibiliGiunti.get(v.i).arrivo;
-
         daArrivo=a.possibiliGiunti.get(v.h).partenza;
         aArrivo=a.possibiliGiunti.get(v.h).arrivo;
-
-
-        // ----------------------
-
 
         movimentoInterno = (ImageButton)findViewById(R.id.movimento2_btn);
         movimentoInterno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 if(v.i < 10){
 
                     a.accendere(v.i+15, GamePlayingActivity.this);
@@ -91,8 +73,6 @@ public class GamePlayingActivity extends AppCompatActivity {
         movimentoEsterno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 if(v.i > 4){
                     a.accendere(v.i+10, GamePlayingActivity.this);
                     v.i = v.i - 5;
@@ -109,8 +89,6 @@ public class GamePlayingActivity extends AppCompatActivity {
         movimentoOrario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 if(v.i == 4 || v.i == 9 || v.i == 14) {
                     if(v.i == 4) {
                         a.accendere(0, GamePlayingActivity.this);
@@ -140,7 +118,6 @@ public class GamePlayingActivity extends AppCompatActivity {
         movimentoAntiOrario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if(v.i == 0 || v.i == 5 || v.i == 10) {
                     if(v.i == 0) {
                         a.accendere(0, GamePlayingActivity.this);
@@ -178,7 +155,6 @@ public class GamePlayingActivity extends AppCompatActivity {
         super.onResume();
         startHandlerThread();
         a.accendiPartenzaArrivo(daPartenza,aPartenza,daArrivo,aArrivo,GamePlayingActivity.this);
-
     }
 
     @Override
@@ -200,8 +176,6 @@ public class GamePlayingActivity extends AppCompatActivity {
         }
     }
 
-
-
     public void startHandlerThread() {
         mMainHandler = new Handler() {
             @Override
@@ -209,6 +183,7 @@ public class GamePlayingActivity extends AppCompatActivity {
                 Toast.makeText(GamePlayingActivity.this, (String) msg.obj, Toast.LENGTH_LONG).show();
             }
         };
+
         mNetworkThread = new NetworkThread(mMainHandler);
         mNetworkThread.start();
         mNetworkHandler = mNetworkThread.getNetworkHandler();
@@ -217,6 +192,5 @@ public class GamePlayingActivity extends AppCompatActivity {
     public Handler getNewtworkHandler() {
         return mNetworkHandler;
     }
-
 
 }

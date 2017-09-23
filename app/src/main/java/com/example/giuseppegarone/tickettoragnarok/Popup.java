@@ -120,7 +120,7 @@ public class Popup extends Activity {
                     // Calculate final score
                     scoreBonus(residualTime);
 
-                    // Stopping timer
+                    // Stop timer
                     cancel();
 
                     Intent i = new Intent(getApplicationContext(), WinActivity.class);
@@ -128,7 +128,7 @@ public class Popup extends Activity {
                     startActivity(i);
                 } else {
 
-                    // Stopping timer
+                    // Stop timer
                     cancel();
 
                     Intent i = new Intent(getApplicationContext(), LoseActivity.class);
@@ -157,8 +157,10 @@ public class Popup extends Activity {
             case R.id.risposta1:
                 if (checked) {
                     rispScelta = risp1Testo;
+
                     confirmButton.setImageResource(R.drawable.confirm_btn);
                     confirmButton.setEnabled(true);
+
                     risp2.setChecked(false);
                     risp3.setChecked(false);
                     risp4.setChecked(false);
@@ -170,8 +172,10 @@ public class Popup extends Activity {
             case R.id.risposta2:
                 if (checked) {
                     rispScelta = risp2Testo;
+
                     confirmButton.setImageResource(R.drawable.confirm_btn);
                     confirmButton.setEnabled(true);
+
                     risp1.setChecked(false);
                     risp3.setChecked(false);
                     risp4.setChecked(false);
@@ -183,8 +187,10 @@ public class Popup extends Activity {
             case R.id.risposta3:
                 if (checked) {
                     rispScelta = risp3Testo;
+
                     confirmButton.setImageResource(R.drawable.confirm_btn);
                     confirmButton.setEnabled(true);
+
                     risp1.setChecked(false);
                     risp2.setChecked(false);
                     risp4.setChecked(false);
@@ -196,8 +202,10 @@ public class Popup extends Activity {
             case R.id.risposta4:
                 if (checked) {
                     rispScelta = risp4Testo;
+
                     confirmButton.setImageResource(R.drawable.confirm_btn);
                     confirmButton.setEnabled(true);
+
                     risp1.setChecked(false);
                     risp2.setChecked(false);
                     risp3.setChecked(false);
@@ -206,6 +214,7 @@ public class Popup extends Activity {
                 }
                 break;
         }
+
     }
 
     /**
@@ -248,7 +257,7 @@ public class Popup extends Activity {
     }
 
     /**
-     * Compare two strings. Used to compare the choosed answer to the right answer.
+     * Compare the choosed answer to the right answer.
      *
      * @param a first string
      * @param b second string

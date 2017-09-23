@@ -5,9 +5,9 @@ import android.graphics.Point;
 
 public class Giunto {
 
-    public Point centro;
     public int raggio;
     public Paint paint;
+    public Point centro;
 
     public Giunto() {
         super();
